@@ -46,6 +46,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'bootstrap-sass'
+gem 'bcrypt-ruby'
 
 group :production do
   gem 'pg'
