@@ -1,2 +1,6 @@
-<h1><%= @exercise.name %></h1>
-
+<h1 class="text-center"><%= @exercise.name %></h1>
+<div class="rudiment-image">
+  <!--<img src="<%= @exercise.image_url %>" class="center-block" />-->
+  <img src="http://www.freedrumlessons.com/media/drum-lessons/drum-rudiments/<%= "#{@exercise.dashify}" %>-1.gif" 
+       class="center-block" />
+</div>
