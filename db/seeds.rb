@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Exercise.delete_all
+rudiments = Exercise.create(
+    [{name: 'Single Stroke Roll', sticking: 'RLRLRLRLRL', id: 1}, 
+     {name: 'Single Stroke Four', sticking: 'RLRL RLRL', id: 2},
+     {name: 'Single Stroke Seven', sticking: 'RLRLRLR', id: 3}, 
+     {name: 'Multiple Bounce Roll', id: 4}])

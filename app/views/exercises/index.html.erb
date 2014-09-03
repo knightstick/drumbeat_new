@@ -1,0 +1,7 @@
+<h1>Exercises index</h1>
+
+<ul>
+    <% @exercises.each do |exercise| %>
+       <li><%= link_to exercise.name, exercise_path(exercise.id) %></li>
+    <% end %>
+</ul>
