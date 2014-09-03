@@ -5,9 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+# Exercise.delete_all
+# rudiments = Exercise.create(
+#     [{name: 'Single Stroke Roll', sticking: 'RLRLRLRLRL', id: 1}, 
+#     {name: 'Single Stroke Four', sticking: 'RLRL RLRL', id: 2},
+#     {name: 'Single Stroke Seven', sticking: 'RLRLRLR', id: 3}, 
+#     {name: 'Multiple Bounce Roll', id: 4}])
+
 Exercise.delete_all
-rudiments = Exercise.create(
-    [{name: 'Single Stroke Roll', sticking: 'RLRLRLRLRL', id: 1}, 
-     {name: 'Single Stroke Four', sticking: 'RLRL RLRL', id: 2},
-     {name: 'Single Stroke Seven', sticking: 'RLRLRLR', id: 3}, 
-     {name: 'Multiple Bounce Roll', id: 4}])
+f = File.read(Rails.root + "lib/rudiments.json")
+rudiments = JSON.parse f
+Exercise.create!(rudiments)

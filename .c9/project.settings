@@ -7,7 +7,8 @@
                     "runner": "Ruby on Rails (Rails 4.0 + Ruby 2.1)",
                     "command": "",
                     "name": "Ruby on Rails",
-                    "default": true
+                    "default": true,
+                    "debug": true
                 }
             },
             "@inited": "true"
