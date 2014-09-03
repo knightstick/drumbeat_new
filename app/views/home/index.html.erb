@@ -1,1 +1,5 @@
 <h1>Welcome to Drumbeat</h1>
+
+<% if @current_user %>
+  <%= "Hello #{@current_user.email}" %>
+<% end %>

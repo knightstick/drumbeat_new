@@ -22,6 +22,12 @@
 <body>
 
   <%= render "layouts/navbar" %>
+  
+  <% if flash %>
+    <% flash.each do |f| %>
+      <%= puts f %>
+    <% end %>
+  <% end %>
 
   <div class="jumbotron">
     <%= yield %>
