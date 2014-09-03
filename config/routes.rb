@@ -1,7 +1,8 @@
 Workspace::Application.routes.draw do
-  root 'exercises#index'
+  root 'exercises#assign'
   get "exercises" => 'exercises#index'
   get "exercises/:id" => 'exercises#show', as: 'exercise'
+  get "assign" => 'exercises#assign'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
