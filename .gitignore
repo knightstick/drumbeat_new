@@ -16,4 +16,4 @@
 /tmp
 
 # Ignore c9 metadata
-/.c9
+/.c9*
