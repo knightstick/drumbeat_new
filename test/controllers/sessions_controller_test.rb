@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get signup" do
+  test "should get login" do
     get :new
     assert_response :success
-    assert_select "title", "Drumbeat | Sign Up"
+    assert_select "title", "Drumbeat | Log In"
   end
 
   # test "should get create" do
