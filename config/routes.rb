@@ -1,9 +1,7 @@
 Workspace::Application.routes.draw do
   root 'home#index'
-  
-  get "sessions/new"
   # get "sessions/create"
-  # get "sessions/destroy"
+  get "logout" => "sessions#destroy"
   get "signup" => "users#new", as: "signup"
   get "login" => "sessions#new", as: "login"
   post "login" => "sessions#create"
