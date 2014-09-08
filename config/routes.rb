@@ -1,13 +1,11 @@
 Workspace::Application.routes.draw do
   root 'home#index'
-  # get "sessions/create"
-  get "logout" => "sessions#destroy"
+  
+  get "logout" => "sessions#destroy", as: "logout"
   get "signup" => "users#new", as: "signup"
   get "login" => "sessions#new", as: "login"
   post "login" => "sessions#create"
-  # get "users/create"
-  # get "home/index"
-  # root 'home#index'
+  
   get "exercises" => 'exercises#index'
   get "exercises/:id" => 'exercises#show', as: 'exercise'
   get "assign" => 'exercises#assign'
