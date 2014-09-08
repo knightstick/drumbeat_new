@@ -3,7 +3,11 @@
     <%= link_to "Drumbeat", '/', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav pull-right">
+      <% if @user %>
+        <li><%= link_to "Log out", logout_path %></li>
+      <% else %>
         <li><%= link_to "Log in", login_path %></li>
+      <% end %>
       </ul>
     </nav>
   </div>
