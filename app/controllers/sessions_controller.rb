@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Logged in"
       session[:user_id] = @user.id
       
-      redirect_to "/"
+      redirect_to @user
     else
       redirect_to "/error"
     end

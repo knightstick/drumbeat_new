@@ -1,5 +1,11 @@
-<h1>Welcome to Drumbeat</h1>
 
-<% if @current_user %>
-  <%= "Hello #{@current_user.email}" %>
-<% end %>
+<div class="container">
+  <h1>Welcome to Drumbeat</h1>
+  
+  <% if @current_user %>
+    <p><%= "Hello #{@current_user.email}" %></p>
+  <% end %>
+  <p>
+    <%= link_to "Sign up", "/signup", class: "btn btn-primary btn-lg" %>
+  </p>
+</div>

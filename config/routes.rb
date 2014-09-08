@@ -1,20 +1,24 @@
 Workspace::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
-  get "users/new"
-  get "users/create"
-  get "home/index"
   root 'home#index'
-  get "exercises" => 'exercises#index'
-  get "exercises/:id" => 'exercises#show', as: 'exercise'
-  get "assign" => 'exercises#assign'
+  
+  get "sessions/new"
+  # get "sessions/create"
+  # get "sessions/destroy"
+  get "signup" => "users#new", as: "signup"
+  get "login" => "sessions#new", as: "login"
+  post "login" => "sessions#create"
+  # get "users/create"
+  # get "home/index"
+  # root 'home#index'
+  # get "exercises" => 'exercises#index'
+  # get "exercises/:id" => 'exercises#show', as: 'exercise'
+  # get "assign" => 'exercises#assign'
   
   resources :users
   
-  get "/login" => "sessions#new"
-  post "/login" => "sessions#create"
-  get "/logout" => "sessions#destroy"
+  # get "/login" => "sessions#new"
+  # post "/login" => "sessions#create"
+  # get "/logout" => "sessions#destroy"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
