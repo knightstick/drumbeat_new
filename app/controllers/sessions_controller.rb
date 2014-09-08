@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to @user
     else
       flash[:error] = "There was an error."
-      redirect_to "/"
+      render "new"
     end
     
   end
