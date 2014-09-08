@@ -8,9 +8,9 @@ Workspace::Application.routes.draw do
   # get "users/create"
   # get "home/index"
   # root 'home#index'
-  # get "exercises" => 'exercises#index'
-  # get "exercises/:id" => 'exercises#show', as: 'exercise'
-  # get "assign" => 'exercises#assign'
+  get "exercises" => 'exercises#index'
+  get "exercises/:id" => 'exercises#show', as: 'exercise'
+  get "assign" => 'exercises#assign'
   
   resources :users
   
