@@ -10,7 +10,9 @@ Workspace::Application.routes.draw do
   get "exercises/:id" => 'exercises#show', as: 'exercise'
   get "assign" => 'exercises#assign'
   
-  resources :users
+  resources :users do
+    resources :scorecards
+  end
   
   # get "/login" => "sessions#new"
   # post "/login" => "sessions#create"
