@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
   end
   
   def login_required
-    flash[:error] = "You must log in first!"
     redirect_to('/') if current_user.blank?
   end
   

@@ -10,4 +10,10 @@ class ScorecardsController < ApplicationController
   def index
     @scorecards = Scorecard.where(user_id: current_user)
   end
+  
+  def update
+    @scorecard = Scorecard.find(params[:id])
+    @scorecard.update(score4: params[:score4])
+    redirect_to "/users/#{current_user.id}/scorecards/#{@scorecard.id}"
+  end
 end

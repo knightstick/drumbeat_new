@@ -6,4 +6,5 @@
   <p>No score set.</p>
 <% end %>
 
-POST A SCORE:
+POST A SCORE: <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", method: :patch) %>
+<%= text_field_tag :score4 %><%= submit_tag "SCORE" %>
