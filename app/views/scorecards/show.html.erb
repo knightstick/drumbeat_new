@@ -1,10 +1,42 @@
-<h1>This is a scorecard for <%= @scorecard.exercise.name %></h1>
+
+<h1><%= render @scorecard.exercise %></h1>
+
 
 <% if @scorecard.score4 %>
   <p>Your current score for 4 bars is <%= @scorecard.score4 %></p>
 <% else %>
-  <p>No score set.</p>
+  <h3>You haven't set a score yet.</h3>
+  
+  <p>Once you can play this rudiment for 4 bars without any mistakes, 
+    set a metronome, and record a NEW HIGH SCORE!</p>  
+
 <% end %>
 
-POST A SCORE: <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", method: :patch) %>
-<%= text_field_tag :score4 %><%= submit_tag "SCORE" %>
+<%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                    method: :patch, class: "navbar-form") do %>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">4 bars</span>
+      <%= text_field_tag :score4, nil, class: "form-control", placeholder: "#{@scorecard.score4}"  %>
+      <%= submit_tag "SCORE", class: "btn btn-default" %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">60 secs</span>
+      <input type="text" class="form-control" placeholder='<%= "#{@scorecard.score4}" %>'>
+      <%= submit_tag "SCORE", class: "btn btn-default" %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">5 mins</span>
+      <input type="text" class="form-control" placeholder='<%= "#{@scorecard.score4}" %>'>
+      <%= submit_tag "SCORE", class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+
+<% end %>
