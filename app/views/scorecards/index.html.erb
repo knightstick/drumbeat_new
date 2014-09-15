@@ -1,7 +1,10 @@
 <% @scorecards.each do |scorecard| %>
-  <p>This is a scorecard for <%= scorecard.exercise.name %></p>
-  <p>Your current score for 4 bars is <%= scorecard.score4 %></p>
-  
-  <p>Set a new score:</p> 
-  <%= link_to "View scorecard", "/users/#{current_user.id}/scorecards/#{scorecard.id}" %>
+  <% if scorecard.score4 %>
+    <p>This is a scorecard for <%= scorecard.exercise.name %></p>
+    <p>Your current score for 4 bars is <%= scorecard.score4 %></p>
+    
+    <p>Set a new score:</p> 
+    <%= link_to "View scorecard", 
+          "/users/#{current_user.id}/scorecards/#{scorecard.id}" %>
+  <% end %>
 <% end %>
