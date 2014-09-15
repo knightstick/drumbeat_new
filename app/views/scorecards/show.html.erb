@@ -1,30 +1,6 @@
 
 <h1><%= render @scorecard.exercise %></h1>
 
-
-<% if @scorecard.score4 %>
-  <h3>Your current score for 4 bars is <%= @scorecard.score4 %></h3>
-<% else %>
-  <h3>You haven't set a score yet.</h3>
-  
-  <p>Once you can play this rudiment for 4 bars without any mistakes, 
-    set a metronome, and record a NEW HIGH SCORE!</p>  
-
-<% end %>
-<% if @scorecard.score60 %>
-  <h3>Your current score for 60 seconds is <%= @scorecard.score60 %></h3>
-<% else %>
-  <h3>You haven't set a score for 60 seconds yet.</h3>
-<% end %>
-
-<% if @scorecard.score5 %>
-  <h3>Your current score for 5 minutes is <%= @scorecard.score5 %></h3>
-<% else %>
-  <h3>You haven't set a score for 5 minutes yet.</h3>
-<% end %>
-
-
-
 <div class="row">
 <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
                     method: :patch, class: "navbar-form") do %>
