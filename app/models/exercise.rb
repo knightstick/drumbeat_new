@@ -8,4 +8,8 @@ class Exercise < ActiveRecord::Base
   def dashify
     self.name.downcase.split(' ').join('-')
   end
+  
+  def self.random_exercise
+    Exercise.find(rand(1..Exercise.count))
+  end
 end

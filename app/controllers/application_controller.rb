@@ -15,5 +15,10 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def login_required
+    flash[:error] = "You must log in first!"
+    redirect_to('/') if current_user.blank?
+  end
+  
   helper_method :current_user, :title_helper
 end

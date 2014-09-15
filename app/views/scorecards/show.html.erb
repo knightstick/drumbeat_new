@@ -1,1 +1,9 @@
-<h1>This is a scorecard for <%= @user.name %>, on <%= @exercise.name %></h1>
+<h1>This is a scorecard for <%= @scorecard.exercise.name %></h1>
+
+<% if @scorecard.score4 %>
+  <p>Your current score for 4 bars is <%= @scorecard.score4 %></p>
+<% else %>
+  <p>No score set.</p>
+<% end %>
+
+POST A SCORE:

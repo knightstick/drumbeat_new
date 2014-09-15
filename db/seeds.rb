@@ -16,3 +16,11 @@ Exercise.delete_all
 f = File.read(Rails.root + "lib/rudiments.json")
 rudiments = JSON.parse f
 Exercise.create!(rudiments)
+
+User.delete_all
+User.create!(id: 1,  name: "Chris Jewell", email: "chrisjohnjewell@gmail.com", 
+             password: "password", password_confirmation: "password")
+             
+Scorecard.delete_all
+Scorecard.create!(user_id: 1, exercise_id: 1, score4: 120)
+Scorecard.create!(user_id: 1, exercise_id: 2, score4: 140)

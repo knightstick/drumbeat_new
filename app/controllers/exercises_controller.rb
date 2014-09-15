@@ -1,5 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :current_user
+  before_action :login_required
   
   def index
     @exercises = Exercise.all
