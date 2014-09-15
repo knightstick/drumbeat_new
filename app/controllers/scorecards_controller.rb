@@ -13,7 +13,10 @@ class ScorecardsController < ApplicationController
   
   def update
     @scorecard = Scorecard.find(params[:id])
-    @scorecard.update(score4: params[:score4])
+    @scorecard.update(score4: params[:score4]) unless params[:score4].blank?
+    @scorecard.update(score60: params[:score60]) unless params[:score60].blank?
+    @scorecard.update(score5: params[:score5]) unless params[:score5].blank?
+
     redirect_to "/users/#{current_user.id}/scorecards/#{@scorecard.id}"
   end
 end
