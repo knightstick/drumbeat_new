@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
 
   
   has_secure_password
+  
+  def set_daily_exercise
+    self.daily_exercise = rand(1..Exercise.count)
+    self.save(validate: false)
+  end
 end

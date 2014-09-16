@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class ScorecardsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  setup :login_as_chris
+  
+  
+  test "should get index" do
+    get :index
+    assert_response :success
+  end
 end

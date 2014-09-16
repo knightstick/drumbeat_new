@@ -1,1 +1,5 @@
-# empty
+# Users
+
+chris:
+  email: 'chris@example.com'
+  name: 'Chris Jewell'

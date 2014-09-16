@@ -35,6 +35,21 @@ class UsersController < ApplicationController
     end
   end
   
+  def daily_exercise_assign
+    @user = current_user
+    @user.set_daily_exercise
+    
+    scorecard = Scorecard.find_by(user_id: current_user.id, 
+                                exercise_id: @user.daily_exercise)
+    if  scorecard
+      redirect_to "/users/#{current_user.id}/scorecards/#{scorecard.id}"
+    # else create scorecard and redirect
+    else
+      new_card = Scorecard.create!(user_id: current_user.id, exercise_id: @user.daily_exercise)
+      redirect_to "/users/#{current_user.id}/scorecards/#{new_card.id}"
+    end
+  end
+  
   private
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)
