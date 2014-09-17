@@ -16,11 +16,11 @@ class User < ActiveRecord::Base
   end
   
   def needs_new_daily?
-    daily_updated_at < DateTime.now - 24.hours
+    daily_updated_at < (DateTime.now - 24.hours)
   end
   
   def assign_daily(options = {})
-    return self.daily_scorecard unless self.needs_new_daily? || options[:assign] = true
+    return self.daily_scorecard unless self.needs_new_daily? || options[:assign] == true
     
     # pick an exercise from the collection
     random_exercise = Exercise.random_exercise
