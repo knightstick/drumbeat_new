@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def assign_new_daily
     @user = current_user
     @user.assign_daily(assign: true)
-    redirect_to "/"
+    redirect_to root_path
   end
   
   private

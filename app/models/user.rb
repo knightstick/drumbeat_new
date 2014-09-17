@@ -2,12 +2,14 @@ class User < ActiveRecord::Base
   has_many :scorecards
   
   before_save { self.email = email.downcase }
+  after_create :assign_daily
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
     uniqueness: { case_sensitive: false }
 
   has_secure_password
+
   
   def set_daily_exercise
     self.daily_exercise = rand(1..Exercise.count)
@@ -15,7 +17,6 @@ class User < ActiveRecord::Base
   end
   
   def needs_new_daily?
-    
     daily_updated_at ||= created_at  < (DateTime.now - 24.hours)
   end
   
@@ -39,7 +40,8 @@ class User < ActiveRecord::Base
   def daily_scorecard
     scorecard = Scorecard.where(user_id: self.id, exercise_id: self.daily_exercise).first
     if scorecard.nil?
-      assign_daily
+      return assign_daily
     end
+    scorecard
   end
 end
