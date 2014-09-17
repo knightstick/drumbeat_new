@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:notice] = "Logged in"
       session[:user_id] = @user.id
-      
+      @user.assign_daily
       redirect_to @user
     else
       flash[:error] = "There was an error."

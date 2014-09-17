@@ -1,0 +1,72 @@
+<%= render @scorecard.exercise %>
+
+<div class="row">
+  <% if @scorecard.score4.nil? %>
+    <div class="well">
+      <p>
+        It looks like you've not set any scores yet. Why don't you see how fast
+        you can play this exercise for 4 bars without making any mistakes? Grab
+        a metronome, a pair of sticks and your surface of choice and go!
+      </p>
+    </div>
+  <% elsif @scorecard.score60.nil? %>
+    <div class="well">
+      <p>
+        So you've proven you can play this exercise for 4 bars. Why not test your
+        abilities a bit further? Try setting a score for 60 seconds with no mistakes!
+      </p>
+    </div>
+    <% elsif @scorecard.score5.nil? %>
+      <div class="well">
+        <p>
+          You've proven your mettle over 60 seconds, but, can you keep this up for
+          the long haul? Try setting a score for 5 minutes with NO MISTAKES!
+          This one is tough!
+        </p>
+      </div>
+    <% end %>
+</div>
+
+<div class="row">
+  <% if @scorecard.score4.blank? %>
+    <div class="col-md-4"></div>
+  <% elsif @scorecard.score60.blank? %>
+    <div class="col-md-2"></div>
+  <% end %>
+  <div class="col-md-4">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">4 bars</span>
+      <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                    method: :patch) do %>
+        <%= text_field_tag :score4, nil, class: "form-control", placeholder: "#{@scorecard.score4}"  %>
+        <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+      <% end %>
+    </div>  
+  </div>
+  <% unless @scorecard.score4.blank? %>
+    <div class="col-md-4">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">60 secs</span>
+        <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                      method: :patch) do %>
+          <%= text_field_tag :score60, nil, class: "form-control", placeholder: "#{@scorecard.score60}"  %>
+          <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+        <% end %>
+      </div>  
+    </div>
+  <% end %>
+  <% unless @scorecard.score4.blank? || @scorecard.score60.blank? %>
+    <div class="col-md-4">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">5 mins</span>
+        <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                      method: :patch) do %>
+          <%= text_field_tag :score5, nil, class: "form-control", placeholder: "#{@scorecard.score5}"  %>
+          <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+        <% end %>
+      </div>  
+    </div>
+  <% end %>
+</div>
+
+

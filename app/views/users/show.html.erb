@@ -1,6 +1,9 @@
 <div class="center">
   <h1><%= @user.name %></h1>
   <h2><%= @user.email %></h2>
-  <p><%= link_to "Pick an exercise", "/assign", 
+  <p>Your current exercise is <%= link_to "#{Exercise.find(@user.daily_exercise).name}", user_scorecard_path(@user, @user.daily_scorecard) %>.</p>
+  <p><%= link_to "Go to daily exercise", "/assign", 
           class: "btn btn-primary btn-lg center" %></p>
+  <p><%= link_to "Pick me a new one!", "/pick_new_daily",
+          class: "btn btn-danger btn-lg center" %></p>
 </div>

@@ -8,10 +8,12 @@ Workspace::Application.routes.draw do
   
   get "exercises" => 'exercises#index'
   get "exercises/:id" => 'exercises#show', as: 'exercise'
-  get "assign" => 'users#daily_exercise_assign'
+  get "assign" => 'users#assign_daily'
   
   get "users/:user_id/scorecards/:id" => 'scorecards#show', as: 'scorecard'
   get "scorecards" => 'scorecards#index'
+  
+  get "pick_new_daily" => "users#assign_new_daily"
   
   resources :users, except: [:index] do
     resources :scorecards, only: [:index, :show, :update]

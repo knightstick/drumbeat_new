@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @scorecard = @user.daily_scorecard
   end
 
   def create
@@ -21,33 +22,14 @@ class UsersController < ApplicationController
   end
   
   def assign_daily
-    # pick an exercise from the collection
-    random_exercise = Exercise.random_exercise
-    # if a scorecard exists for the current user, redirect to scorecard
-    scorecard = Scorecard.find_by(user_id: current_user.id, 
-                                exercise_id: random_exercise.id)
-    if  scorecard
-      redirect_to "/users/#{current_user.id}/scorecards/#{scorecard.id}"
-    # else create scorecard and redirect
-    else
-      new_card = Scorecard.create!(user_id: current_user.id, exercise_id: random_exercise.id)
-      redirect_to "/users/#{current_user.id}/scorecards/#{new_card.id}"
-    end
+    @user = current_user
+    redirect_to [@user, @user.assign_daily]
   end
   
-  def daily_exercise_assign
+  def assign_new_daily
     @user = current_user
-    @user.set_daily_exercise
-    
-    scorecard = Scorecard.find_by(user_id: current_user.id, 
-                                exercise_id: @user.daily_exercise)
-    if  scorecard
-      redirect_to "/users/#{current_user.id}/scorecards/#{scorecard.id}"
-    # else create scorecard and redirect
-    else
-      new_card = Scorecard.create!(user_id: current_user.id, exercise_id: @user.daily_exercise)
-      redirect_to "/users/#{current_user.id}/scorecards/#{new_card.id}"
-    end
+    @user.assign_daily(assign: true)
+    redirect_to [@user, @user.daily_scorecard]
   end
   
   private
