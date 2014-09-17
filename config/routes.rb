@@ -15,6 +15,8 @@ Workspace::Application.routes.draw do
   
   get "pick_new_daily" => "users#assign_new_daily"
   
+  get "users/:user_id/scorecards/:id/reset" => "scorecards#reset", as: 'reset_scorecard'
+  
   resources :users, except: [:index] do
     resources :scorecards, only: [:index, :show, :update]
   end

@@ -17,4 +17,10 @@ class ScorecardsController < ApplicationController
 
     redirect_to "/users/#{current_user.id}/scorecards/#{@scorecard.id}"
   end
+  
+  def reset
+    @scorecard = Scorecard.find(params[:id])
+    @scorecard.reset_scores
+    redirect_to [current_user, @scorecard]
+  end
 end

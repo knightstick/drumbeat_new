@@ -28,45 +28,59 @@
 </div>
 
 <div class="row">
-  <% if @scorecard.score4.blank? %>
-    <div class="col-md-4"></div>
-  <% elsif @scorecard.score60.blank? %>
-    <div class="col-md-2"></div>
-  <% end %>
-  <div class="col-md-4">
-    <div class="input-group input-group-lg">
-      <span class="input-group-addon">4 bars</span>
-      <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
-                    method: :patch) do %>
-        <%= text_field_tag :score4, nil, class: "form-control", placeholder: "#{@scorecard.score4}"  %>
-        <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
-      <% end %>
-    </div>  
+  <div class="control-group">
+    <% if @scorecard.score4.blank? %>
+      <div class="col-md-4"></div>
+    <% elsif @scorecard.score60.blank? %>
+      <div class="col-md-2"></div>
+    <% end %>
+    <div class="col-md-4">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon">4 bars</span>
+        <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                      method: :patch) do %>
+          <%= text_field_tag :score4, nil, class: "form-control", placeholder: "#{@scorecard.score4}"  %>
+          <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+        <% end %>
+      </div>  
+    </div>
+    <% unless @scorecard.score4.blank? %>
+      <div class="col-md-4">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">60 secs</span>
+          <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                        method: :patch) do %>
+            <%= text_field_tag :score60, nil, class: "form-control", placeholder: "#{@scorecard.score60}"  %>
+            <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+          <% end %>
+        </div>  
+      </div>
+    <% end %>
+    <% unless @scorecard.score4.blank? || @scorecard.score60.blank? %>
+      <div class="col-md-4">
+        <div class="input-group input-group-lg">
+          <span class="input-group-addon">5 mins</span>
+          <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                        method: :patch) do %>
+            <%= text_field_tag :score5, nil, class: "form-control", placeholder: "#{@scorecard.score5}"  %>
+            <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+          <% end %>
+        </div>  
+      </div>
+    <% end %>
   </div>
-  <% unless @scorecard.score4.blank? %>
-    <div class="col-md-4">
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">60 secs</span>
-        <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
-                      method: :patch) do %>
-          <%= text_field_tag :score60, nil, class: "form-control", placeholder: "#{@scorecard.score60}"  %>
-          <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
-        <% end %>
-      </div>  
-    </div>
-  <% end %>
-  <% unless @scorecard.score4.blank? || @scorecard.score60.blank? %>
-    <div class="col-md-4">
-      <div class="input-group input-group-lg">
-        <span class="input-group-addon">5 mins</span>
-        <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
-                      method: :patch) do %>
-          <%= text_field_tag :score5, nil, class: "form-control", placeholder: "#{@scorecard.score5}"  %>
-          <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
-        <% end %>
-      </div>  
-    </div>
-  <% end %>
 </div>
+
+<div class="row">
+  <div class="control-group"></div>
+    <div class="col-md-4 col-md-offset-4 center top-padding">
+      <p>
+        <%= link_to "RESET scores", reset_scorecard_path, class: "btn btn-lrg btn-danger" %>  
+      </p>
+    </div>
+  </div>
+</div>
+
+
 
 
