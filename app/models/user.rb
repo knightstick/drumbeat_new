@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, 
     uniqueness: { case_sensitive: false }
 
-  
   has_secure_password
   
   def set_daily_exercise
@@ -38,6 +37,9 @@ class User < ActiveRecord::Base
   end
   
   def daily_scorecard
-    Scorecard.where(user_id: self.id, exercise_id: self.daily_exercise).first
+    scorecard = Scorecard.where(user_id: self.id, exercise_id: self.daily_exercise).first
+    if scorecard.nil?
+      assign_daily
+    end
   end
 end
