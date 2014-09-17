@@ -1,9 +1,18 @@
 <div class="center">
-  <h1><%= @user.name %></h1>
-  <h2><%= @user.email %></h2>
-  <p>Your current exercise is <%= link_to "#{Exercise.find(@user.daily_exercise).name}", user_scorecard_path(@user, @user.daily_scorecard) %>.</p>
-  <p><%= link_to "Go to daily exercise", "/assign", 
-          class: "btn btn-primary btn-lg center" %></p>
-  <p><%= link_to "Pick me a new one!", "/pick_new_daily",
-          class: "btn btn-danger btn-lg center" %></p>
+  <h2>Logged in as <%= @user.email %></h2>
+  <h1>Today's Daily Exercise: <%= @user.daily_scorecard.exercise.name %></h1>
+  <h2><%= @user.daily_updated_at.strftime("Assigned on %m / %d / %Y at %H:%M") %>
+    <% if @user.needs_new_daily? %>
+    | <%= link_to "Get an exercise for today", assign_new_daily_path %>
+    <% end %>
+  </h2>
+  <%= render @user.daily_scorecard %>
+</div>
+
+<div class="row top-padding text-center">
+  <div class="well">
+    <p>
+      I give up on this one, <%= link_to "give me a new one!", assign_new_daily_path %>
+    </p>
+  </div>
 </div>

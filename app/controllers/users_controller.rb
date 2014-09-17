@@ -23,13 +23,13 @@ class UsersController < ApplicationController
   
   def assign_daily
     @user = current_user
-    redirect_to [@user, @user.assign_daily]
+    redirect_to "/"
   end
   
   def assign_new_daily
     @user = current_user
     @user.assign_daily(assign: true)
-    redirect_to [@user, @user.daily_scorecard]
+    redirect_to "/"
   end
   
   private
