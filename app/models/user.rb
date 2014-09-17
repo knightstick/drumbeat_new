@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   end
   
   def needs_new_daily?
-    daily_updated_at < (DateTime.now - 24.hours)
+    
+    daily_updated_at ||= created_at  < (DateTime.now - 24.hours)
   end
   
   def assign_daily(options = {})
