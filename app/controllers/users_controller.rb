@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @user.assign_daily
     @scorecard = @user.daily_scorecard
   end
 

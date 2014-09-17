@@ -1,17 +1,25 @@
-<div class="center">
-  <h1>Today's Daily Exercise: <%= @user.daily_scorecard.exercise.name %></h1>
-  <h2><%= @user.daily_updated_at.localtime.strftime("Assigned on %m / %d / %Y at %H:%M") %>
-    <% if @user.needs_new_daily? %>
-    | <%= link_to "Get an exercise for today", assign_new_daily_path %>
-    <% end %>
-  </h2>
-  <%= render @user.daily_scorecard %>
-</div>
 
-<div class="row top-padding text-center">
-  <div class="well">
-    <p>
-      I give up on this one, <%= link_to "give me a new one!", assign_new_daily_path %>
-    </p>
-  </div>
-</div>
+  <% if @user.daily_scorecard %>
+    <div class="center">
+      <h1>Today's Daily Exercise: <%= @user.daily_scorecard.exercise.name %></h1>
+      <h2><%= @user.daily_updated_at.localtime.strftime("Assigned on %m / %d / %Y at %H:%M") %>
+        <% if @user.needs_new_daily? %>
+        | <%= link_to "Get an exercise for today", assign_new_daily_path %>
+        <% end %>
+      </h2>
+      <%= render @user.daily_scorecard %>
+    </div>
+    <div class="row top-padding text-center">
+      <div class="well">
+        <p>
+          I give up on this one, <%= link_to "give me a new one!", assign_new_daily_path %>
+        </p>
+      </div>
+    </div>
+
+  <% else %>
+    <div class="center">
+      <%= link_to "Pick me an exercise!!!", assign_new_daily_path, class: "btn btn-danger btn-lrg" %>      
+    </div> 
+
+  <% end %>

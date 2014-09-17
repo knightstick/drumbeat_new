@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Logged in as #{@user.name}"
       session[:user_id] = @user.id
       @user.assign_daily
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:error] = "Could not log you in."
       render "new"
