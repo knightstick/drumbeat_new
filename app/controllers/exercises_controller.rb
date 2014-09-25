@@ -3,7 +3,7 @@ class ExercisesController < ApplicationController
   before_action :login_required
   
   def index
-    @exercises = Exercise.all
+    @tiers = Exercise.tiered
   end
   
   def show

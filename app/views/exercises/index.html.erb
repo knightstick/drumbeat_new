@@ -1,7 +1,11 @@
 <h1>Exercises index</h1>
-
-<ul>
-    <% @exercises.each do |exercise| %>
-       <li><%= link_to exercise.name, exercise_path(exercise.id) %></li>
-    <% end %>
-</ul>
+<% @tiers.each do |key, value| %>
+	<div class="well">
+		<ul>
+			<h3><%= "Tier #{key.to_s.slice(-1)}" %></h3>
+			<% value.each do |exercise| %>
+				<li><%= link_to exercise.name, exercise_path(exercise) %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

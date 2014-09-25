@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917051339) do
+ActiveRecord::Schema.define(version: 20140925052734) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20140917051339) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_url"
+    t.integer  "tier"
   end
 
   create_table "scorecards", force: true do |t|

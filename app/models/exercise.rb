@@ -12,4 +12,16 @@ class Exercise < ActiveRecord::Base
   def self.random_exercise
     Exercise.where(id: rand(1..Exercise.count)).first
   end
+
+  def self.tier(i)
+    Exercise.where(tier: i)
+  end
+
+  def self.tiered
+    tiered = {}
+    (1..4).each do |i|
+      tiered["tier#{i}".to_sym] = Exercise.tier(i) 
+    end
+    tiered
+  end
 end
