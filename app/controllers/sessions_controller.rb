@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       flash[:notice] = "Logged in as #{@user.name}"
       session[:user_id] = @user.id
-      @user.assign_daily
       redirect_to root_path
     else
       flash[:error] = "Could not log you in."
