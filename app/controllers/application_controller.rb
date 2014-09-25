@@ -16,7 +16,10 @@ class ApplicationController < ActionController::Base
   end
   
   def login_required
-    redirect_to('/') if current_user.blank?
+    if current_user.blank?
+      flash[:notice] = "You must be logged in to view this page."
+      redirect_to('/') 
+    end
   end
   
   helper_method :current_user, :title_helper
