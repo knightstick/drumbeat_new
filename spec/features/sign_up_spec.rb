@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe "Signing up a new User" do 
-  before { visit '/signup' }
+  before { 
+    @exercise = Exercise.create(name: "Single Stroke Roll")
+    visit '/signup' 
+  }
   
   context "with valid information" do
     before do 

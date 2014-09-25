@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   def self.make(params)
     user = User.new(params)
-    user.daily_exercise = Exercise.random_exercise.id
+    user.daily_exercise = Exercise.random_exercise.try(:id)
     user.daily_updated_at = Time.now
     user
   end
