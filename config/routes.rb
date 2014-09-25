@@ -8,7 +8,10 @@ Workspace::Application.routes.draw do
   
   get "exercises" => 'exercises#index'
   get "exercises/:id" => 'exercises#show', as: 'exercise'
+  
+  get "profile" => 'users#profile', as: 'profile'
   get "assign" => 'users#assign_daily', as: 'assign_daily'
+  
   
   
   get "users/:user_id/scorecards/:id" => 'scorecards#show', as: 'scorecard'

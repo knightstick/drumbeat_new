@@ -10,6 +10,6 @@ class Exercise < ActiveRecord::Base
   end
   
   def self.random_exercise
-    Exercise.find(rand(1..Exercise.count))
+    Exercise.where(id: rand(1..Exercise.count)).first
   end
 end

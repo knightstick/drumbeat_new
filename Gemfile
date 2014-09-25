@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails'
 
 # Use sqlite3 as the database for Active Record
 group :development do 
@@ -54,3 +54,11 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn', '4.8.3'
 end
+
+group :development, :test do
+  gem 'spring-commands-rspec'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+end
+
+gem 'capybara'

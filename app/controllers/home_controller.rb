@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @user = current_user
     if @user 
-      render action: "../users/show"
+      redirect_to "/profile"
     else
       render "index"
     end

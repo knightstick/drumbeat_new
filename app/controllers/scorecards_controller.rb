@@ -15,7 +15,7 @@ class ScorecardsController < ApplicationController
     @scorecard = Scorecard.find(params[:id])
     @scorecard.submit_score(score4: params[:score4], score60: params[:score60], score5: params[:score5])
 
-    redirect_to "/users/#{current_user.id}/scorecards/#{@scorecard.id}"
+    redirect_to "/profile"
   end
   
   def reset

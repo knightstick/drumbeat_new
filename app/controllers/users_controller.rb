@@ -7,24 +7,24 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @user.assign_daily
-    @scorecard = @user.daily_scorecard
+  end
+  
+  def profile
+    @user = current_user
+    @scorecard = Scorecard.get(@user.daily_exercise, @user.id)
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.make(user_params)
     if @user.save
       flash[:success] = "New user created!"
       session[:user_id] = @user.id
-      redirect_to @user
+      @user.daily_scorecard
+      redirect_to "/profile"
     else
+      flash[:error] = "ERROR"
       render "new"
     end
-  end
-  
-  def assign_daily
-    @user = current_user
-    redirect_to "/"
   end
   
   def assign_new_daily
