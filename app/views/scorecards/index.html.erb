@@ -1,10 +1,27 @@
-<% @scorecards.each do |scorecard| %>
-  <% if scorecard.score4 %>
-    <p>This is a scorecard for <%= scorecard.exercise.name %></p>
-    <p>Your current score for 4 bars is <%= scorecard.score4 %></p>
-    
-    <p>Set a new score:</p> 
-    <%= link_to "View scorecard", 
-          "/users/#{current_user.id}/scorecards/#{scorecard.id}" %>
-  <% end %>
+<% if @scorecards.empty? %>
+	<p></p>
+<% else %>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>Exercise</th>
+              <th>4 bars</th>
+              <th>60 seconds</th>
+              <th>5 minutes</th>
+            </tr>
+        </thead>
+        <tbody>
+        	<% @scorecards.each do |scorecard| %>
+        	<tr>
+        		<td><%= link_to scorecard.exercise.name, scorecard_path(current_user, scorecard) %></td>
+        		<td><%= dash_nils scorecard.score4 %></td>
+        		<td><%= dash_nils scorecard.score60 %></td>
+        		<td><%= dash_nils scorecard.score5 %></td>
+    		</tr>
+    		<% end %>
+    	</tbody>
+    </table>
+</div>
 <% end %>
+
