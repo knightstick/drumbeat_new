@@ -20,6 +20,8 @@ Exercise.create!(rudiments)
 User.delete_all
 User.create!(id: 1,  name: "Chris Jewell", email: "chrisjohnjewell@gmail.com", 
              password: "password", password_confirmation: "password")
+
+User.first.assign_new_daily
              
 Scorecard.delete_all
 Scorecard.create!(user_id: 1, exercise_id: 1, score4: 120)
