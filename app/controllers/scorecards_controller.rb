@@ -21,6 +21,6 @@ class ScorecardsController < ApplicationController
   def reset
     @scorecard = Scorecard.find(params[:id])
     @scorecard.reset_scores
-    redirect_to [current_user, @scorecard]
+    redirect_to "/profile"
   end
 end

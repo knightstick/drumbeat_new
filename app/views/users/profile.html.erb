@@ -9,6 +9,13 @@
 </div>
 
 <div class="row top-padding text-center">
+    <p>
+    <%= link_to "Reset my scores", reset_scorecard_path(current_user, @scorecard) , class: "btn btn-danger" %>
+    </p>
+  </div>
+</div>
+
+<div class="row top-padding text-center">
   <div class="well">
     <p>
     I give up on this one, <%= link_to "give me a new one!", assign_new_daily_path %>
