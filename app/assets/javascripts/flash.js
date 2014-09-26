@@ -2,7 +2,8 @@ var ready;
 ready = function() {
 	setTimeout(function(){
 		$('#flash-notice').fadeOut();
-	}, 2000);
+		$('#flash-success').fadeOut();
+	}, 1500);
 };
 
 $(document).ready(ready);
