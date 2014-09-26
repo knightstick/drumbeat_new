@@ -11,6 +11,7 @@ Workspace::Application.routes.draw do
   
   get "profile" => 'users#profile', as: 'profile'
   get "assign" => 'users#assign_daily', as: 'assign_daily'
+  get "assign/:id" => 'users#assign', as: 'assign'
   
   
   

@@ -1,5 +1,38 @@
 <%= render @exercise %>
-<div class="center">
-  <p><%= link_to "Pick another exercise", "/assign", 
-                class: "btn btn-primary btn-lg center" %></p> 
+
+<% if @scorecard.score4.present? || @scorecard.score60.present? || @scorecard.score5.present? %>
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	        <thead>
+	            <tr>
+	              <th>High Scores: </th>
+	              <th>4 bars</th>
+	              <th>60 seconds</th>
+	              <th>5 minutes</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        	<tr>
+	        		<td></td>
+	        		<td><%= dash_nils @scorecard.score4 %></td>
+	        		<td><%= dash_nils @scorecard.score60 %></td>
+	        		<td><%= dash_nils @scorecard.score5 %></td>
+	        	</tr>
+	        </tbody>
+	    </table>
+	</div>
+<% end %>
+
+<div class="row">
+  <div class="control-group"></div>
+    <div class="col-md-4 col-md-offset-4 center top-padding">
+      <p>
+        <%= link_to "Make this my daily exercise", assign_path(@exercise.id), class: "btn btn-lrg btn-danger" %> 
+      </p>
+      <p>
+      	<%= link_to "Back to All Exercises", exercises_path %>
+      </p>
+    </div>
+  </div>
 </div>
+

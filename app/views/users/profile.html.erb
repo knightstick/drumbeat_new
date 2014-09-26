@@ -1,10 +1,11 @@
 <div class="center">
-  <h1>Today's Daily Exercise: <br /><%= @scorecard.exercise.name %></h1>
   <h2><%= @user.daily_updated_at.localtime.strftime("Assigned on %m / %d / %Y at %H:%M") %>
   <% if @user.needs_new_daily? %>
       | <%= link_to "Get an exercise for today", assign_new_daily_path %>
   <% end %>
   </h2>
+
+  <h1>Today's Daily Exercise: </h1>
   <%= render @scorecard %>
 </div>
 

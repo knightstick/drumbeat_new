@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     @user.assign_daily(assign: true)
     redirect_to root_path
   end
+
+  def assign
+    @user = current_user
+    @user.assign_daily(assign: true, exercise: params[:id])
+    redirect_to root_path
+  end
   
   private
     def user_params

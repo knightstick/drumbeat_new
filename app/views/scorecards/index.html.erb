@@ -14,7 +14,7 @@
         <tbody>
         	<% @scorecards.each do |scorecard| %>
         	<tr>
-        		<td><%= link_to scorecard.exercise.name, scorecard_path(current_user, scorecard) %></td>
+        		<td><%= link_to scorecard.exercise.name, exercise_path(scorecard.exercise) %></td>
         		<td><%= dash_nils scorecard.score4 %></td>
         		<td><%= dash_nils scorecard.score60 %></td>
         		<td><%= dash_nils scorecard.score5 %></td>

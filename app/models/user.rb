@@ -26,7 +26,11 @@ class User < ActiveRecord::Base
   
   def assign_daily(options = {})
     if self.needs_new_daily? || options[:assign]
-      update_attributes(daily_exercise: Exercise.random_exercise.id, daily_updated_at: Time.now)
+      if options[:exercise].present?
+        update_attributes(daily_exercise: options[:exercise], daily_updated_at: Time.now)        
+      else
+        update_attributes(daily_exercise: Exercise.random_exercise.id, daily_updated_at: Time.now)
+      end
     else
       false
     end
