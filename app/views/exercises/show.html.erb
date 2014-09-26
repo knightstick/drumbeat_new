@@ -1,27 +1,6 @@
 <%= render @exercise %>
 
-<% if @scorecard.score4.present? || @scorecard.score60.present? || @scorecard.score5.present? %>
-	<div class="table-responsive">
-	    <table class="table table-striped">
-	        <thead>
-	            <tr>
-	              <th>High Scores: </th>
-	              <th>4 bars</th>
-	              <th>60 seconds</th>
-	              <th>5 minutes</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	        	<tr>
-	        		<td></td>
-	        		<td><%= dash_nils @scorecard.score4 %></td>
-	        		<td><%= dash_nils @scorecard.score60 %></td>
-	        		<td><%= dash_nils @scorecard.score5 %></td>
-	        	</tr>
-	        </tbody>
-	    </table>
-	</div>
-<% end %>
+<%= render "score_table", object: @scorecard %>
 
 <div class="row">
   <div class="control-group"></div>

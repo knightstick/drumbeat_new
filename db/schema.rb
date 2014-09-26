@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925052734) do
+ActiveRecord::Schema.define(version: 20140926032203) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(version: 20140925052734) do
     t.string   "name"
     t.integer  "daily_exercise"
     t.datetime "daily_updated_at"
+    t.integer  "weekly_exercise"
+    t.integer  "monthly_exercise"
+    t.datetime "weekly_updated_at"
+    t.datetime "monthly_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,37 +1,6 @@
 <%= render @scorecard.exercise %>
 
 <div class="row">
-  <div class="well">
-  <% if @scorecard.score4.nil? %>
-    <p>
-      It looks like you've not set any scores yet. Why don't you see how fast
-      you can play this exercise for 4 bars without making any mistakes? Grab
-      a metronome, a pair of sticks and your surface of choice and go!
-    </p>
-  <% elsif @scorecard.score60.nil? %>
-    <p>
-      So you've proven you can play this exercise for 4 bars. Why not test your
-      abilities a bit further? Try setting a score for 60 seconds with no mistakes!
-    </p>
-  <% elsif @scorecard.score5.nil? %>
-    <p>
-      You've proven your mettle over 60 seconds, but, can you keep this up for
-      the long haul? Try setting a score for 5 minutes with NO MISTAKES!
-      This one is tough!
-    </p>
-  <% else %>
-    <p>
-      Practise makes perfect! Set a new high score!
-    </p>
-  <% end %>
-  <p>
-    I give up on this one, <%= link_to "give me a new one", assign_new_daily_path %>, or 
-      <%= link_to "browse all exercises", exercises_path %>.
-  </p>
-  </div>
-</div>
-
-<div class="row">
   <div class="control-group">
     <% if @scorecard.score4.blank? %>
       <div class="col-md-4"></div>

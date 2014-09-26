@@ -11,7 +11,9 @@ class UsersController < ApplicationController
   
   def profile
     @user = current_user
-    @scorecard = Scorecard.get(@user.daily_exercise, @user.id)
+    @daily_scorecard = Scorecard.get(@user.daily_exercise, @user.id)
+    @weekly_scorecard = Scorecard.get(@user.weekly_exercise, @user.id)
+    @monthly_scorecard = Scorecard.get(@user.monthly_exercise, @user.id)
   end
 
   def create
@@ -29,16 +31,34 @@ class UsersController < ApplicationController
   
   def assign_new_daily
     @user = current_user
-    @user.assign_daily(assign: true)
+    if params[:id].present?
+      @user.assign_daily(force: true, exercise: params[:id])
+    else
+      @user.assign_new_daily
+    end
     redirect_to root_path
   end
 
-  def assign
+  def assign_new_weekly
     @user = current_user
-    @user.assign_daily(assign: true, exercise: params[:id])
+    if params[:id].present?
+      @user.assign_weekly(force: true, exercise: params[:id])
+    else
+      @user.assign_new_weekly
+    end
     redirect_to root_path
   end
-  
+
+  def assign_new_monthly
+    @user = current_user
+    if params[:id].present?
+      @user.assign_monthly(force: true, exercise: params[:id])
+    else
+      @user.assign_new_monthly
+    end
+    redirect_to root_path
+  end
+
   private
     def user_params
       params.require(:user).permit(:email, :name, :password, :password_confirmation)

@@ -19,25 +19,71 @@ class User < ActiveRecord::Base
   def needs_new_daily?
     daily_updated_at.nil? || daily_updated_at < (DateTime.now - 24.hours)
   end
+
+  def needs_new_weekly?
+    weekly_updated_at.nil? || weekly_updated_at < (DateTime.now - 7.days)
+  end
+
+  def needs_new_monthly?
+    monthly_updated_at.nil? || monthly_updated_at < (DateTime.now - 1.month)
+  end
   
   def assign_new_daily
-    assign_daily(assign: true)
+    assign_daily(force: true)
+  end
+
+  def assign_new_weekly
+    assign_weekly(force: true)
+  end
+
+  def assign_new_monthly
+    assign_monthly(force: true)
   end
   
   def assign_daily(options = {})
-    if self.needs_new_daily? || options[:assign]
+    if self.needs_new_daily? || options[:force]
       if options[:exercise].present?
-        update_attributes(daily_exercise: options[:exercise], daily_updated_at: Time.now)        
+        assign(options[:exercise], "daily")       
       else
-        update_attributes(daily_exercise: Exercise.random_exercise.id, daily_updated_at: Time.now)
+        assign(Exercise.random_exercise.id, "daily")
       end
     else
       false
     end
   end
+
+  def assign_weekly(options = {})
+    if self.needs_new_weekly? || options[:force]
+      if options[:exercise].present?
+        assign(options[:exercise], "weekly")       
+      else
+        assign(Exercise.random_exercise.id, "weekly")
+      end
+    else
+      false
+    end
+  end
+
+  def assign_monthly(options = {})
+    if self.needs_new_monthly? || options[:force]
+      if options[:exercise].present?
+        assign(options[:exercise], "monthly")       
+      else
+        assign(Exercise.random_exercise.id, "monthly")
+      end
+    else
+      false
+    end
+  end  
+
   
   def daily_scorecard
     Scorecard.get(self.daily_exercise, self.id )
   end
 
+  private
+    def assign(exercise, timeframe = "daily")
+      # options: timeframe, exercise
+      update_attributes("#{timeframe}_exercise".to_sym => exercise, "#{timeframe}_updated_at".to_sym => Time.now)
+    end
 end

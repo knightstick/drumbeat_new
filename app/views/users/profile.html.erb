@@ -6,14 +6,65 @@
   </h2>
 
   <h1>Today's Daily Exercise: </h1>
-  <%= render @scorecard %>
+  <%= render partial: "scorecards/scorecard", object: @scorecard = @daily_scorecard %>
 </div>
 
 <div class="row top-padding text-center">
     <p>
-    <%= link_to "Reset my scores", reset_scorecard_path(current_user, @scorecard) , class: "btn btn-danger" %>
+    <%= link_to "Reset my scores", reset_scorecard_path(current_user, @daily_scorecard) , class: "btn btn-danger" %>
     </p>
   </div>
 </div>
 
+<div class="center">
+  <div class="col-md-6">
+    <div class="well">
+      <% unless @user.weekly_updated_at.nil? %>
+        <h2>Assigned <%= time_ago_in_words @user.weekly_updated_at.localtime %> ago
+        <% if @user.needs_new_weekly? %>
+            | <%= link_to "Get a new weekly exercise", assign_new_weekly_path %>
+        <% end %>
+        </h2>
+      <% end %>
+      <h1>Weekly Exercise: </h1>
+      <% if @user.weekly_exercise.present? %>
+        <%= render @weekly_scorecard.exercise %>
+        <%= render partial: "exercises/score_table", object: @scorecard = @weekly_scorecard %>
+        <%= link_to "Set a new high score", [current_user, @weekly_scorecard] %><br />
+        <hr />
+        <p>
+      <% else %>
+          <p>
+          None set:
+  
+      <% end %>
+      <%= link_to "Pick me a new weekly exercise", assign_new_weekly_path %>
+      or <%= link_to "use today's exercise as weekly exercise", assign_weekly_path(@daily_scorecard.exercise.id) %></p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="well">
+      <% unless @user.monthly_updated_at.nil? %>
+        <h2>Assigned <%= time_ago_in_words @user.monthly_updated_at.localtime %> ago
+        <% if @user.needs_new_monthly? %>
+            | <%= link_to "Get a new monthly exercise", assign_new_monthly_path %>
+        <% end %>
+        </h2>
+      <% end %>
+      <h1>Monthly Exercise: </h1>
+      <% if @user.monthly_exercise.present? %>
+        <%= render @monthly_scorecard.exercise %>
+        <%= render partial: "exercises/score_table", object: @scorecard = @monthly_scorecard %>
+        <%= link_to "Set a new high score", [current_user, @monthly_scorecard] %>
+        <hr />
+        <p>
+      <% else %>
+          <p>
+            None set:
+      <% end %> 
+      <%= link_to "Pick me a new monthly exercise", assign_new_monthly_path %>
+      or <%= link_to "use today's exercise as monthly exercise", assign_monthly_path(@daily_scorecard.exercise.id) %> </p>
+    </div>
+  </div>
+</div>
 
