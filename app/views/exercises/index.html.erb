@@ -1,6 +1,6 @@
 <h1>Exercises index</h1>
 <% @tiers.each do |key, value| %>
-	<div class="well">
+	<div class="well col-md-3">
 		<ul>
 			<h3><%= "Tier #{key.to_s.slice(-1)}" %></h3>
 			<% value.each do |exercise| %>
