@@ -30,7 +30,6 @@
       <% if @user.weekly_exercise.present? %>
         <%= render @weekly_scorecard.exercise %>
         <%= render partial: "exercises/score_table", object: @scorecard = @weekly_scorecard %>
-        <%= link_to "Set a new high score", [current_user, @weekly_scorecard] %><br />
         <hr />
         <p>
       <% else %>
@@ -55,7 +54,6 @@
       <% if @user.monthly_exercise.present? %>
         <%= render @monthly_scorecard.exercise %>
         <%= render partial: "exercises/score_table", object: @scorecard = @monthly_scorecard %>
-        <%= link_to "Set a new high score", [current_user, @monthly_scorecard] %>
         <hr />
         <p>
       <% else %>
