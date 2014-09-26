@@ -14,6 +14,18 @@ class ApplicationController < ActionController::Base
       "Drumbeat"
     end
   end
+
+  def score_helper(score)
+    if score == 4
+      "4 bars"
+    elsif score == 60
+      "60 secs"
+    elsif score == 5
+      "5 mins"
+    else
+      score
+    end
+  end
   
   def login_required
     if current_user.blank?
@@ -22,5 +34,5 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  helper_method :current_user, :title_helper
+  helper_method :current_user, :title_helper, :score_helper
 end

@@ -1,0 +1,12 @@
+<% score ||= 4 %>
+<% current_score = @scorecard.send("score#{score}") %>
+
+<div class="input-group input-group-lg">
+  <span class="input-group-addon"><%= score_helper(score) %></span>
+  <%= form_tag("/users/#{current_user.id}/scorecards/#{@scorecard.id}", 
+                method: :patch, remote: true) do %>
+
+    <%= text_field_tag "score#{score}".to_sym, nil, class: "form-control", placeholder: "#{current_score}"  %>
+    <%= submit_tag "SCORE", class: "btn btn-default btn-danger" %>
+  <% end %>
+</div>  
