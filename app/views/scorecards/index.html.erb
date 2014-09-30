@@ -1,5 +1,9 @@
-<% if @scorecards.empty? %>
-	<p></p>
+<% if current_user.no_scores? %>
+	<div class="center">
+    <p>You've not set any scores yet.</p>
+    <%= link_to "Give me a new daily exercise", assign_new_daily_path %>, or 
+      <%= link_to "browse all exercises", exercises_path %>.
+  </div>
 <% else %>
 <div class="table-responsive">
     <table class="table table-striped">

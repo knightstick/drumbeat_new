@@ -1,4 +1,5 @@
-<div class="center">
+<div class="center"> 
+
   <h2><%= @user.daily_updated_at.localtime.strftime("Assigned on %m / %d / %Y at %H:%M") %>
   <% if @user.needs_new_daily? %>
       | <%= link_to "Get an exercise for today", assign_new_daily_path %>
