@@ -10,13 +10,11 @@ Workspace::Application.routes.draw do
   get "exercises/:id" => 'exercises#show', as: 'exercise'
   
   get "profile" => 'users#profile', as: 'profile'
-  get "assign/:id" => 'users#assign_new_daily', as: 'assign'
+  get "assign/:id" => 'users#assign_new_daily', as: 'assign_daily'
   get "assign_weekly/:id" => 'users#assign_new_weekly', as: 'assign_weekly'
   get "assign_monthly/:id" => 'users#assign_new_monthly', as: 'assign_monthly'
+  post "assign/:id" => 'users#assign', as: 'assign'
 
-
-  
-  
   
   get "users/:user_id/scorecards/:id" => 'scorecards#show', as: 'scorecard'
   get "scorecards" => 'scorecards#index', as: 'scorecards'

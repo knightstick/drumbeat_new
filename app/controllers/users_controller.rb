@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :login_required, except: [:new, :create]
+  before_action :current_user
   
   def new
     @user = User.new
@@ -27,6 +28,17 @@ class UsersController < ApplicationController
       flash[:error] = "ERROR"
       render "new"
     end
+  end
+
+  def assign
+    if params["timeframe"] == "Today"
+      @user.assign_daily(force: true, exercise: (params[:id]))
+    elsif params["timeframe"] == "This Week"
+      @user.assign_weekly(force: true, exercise: (params[:id]))
+    elsif params["timeframe"] == "This Month"
+      @user.assign_monthly(force: true, exercise: (params[:id]))
+    end
+    redirect_to '/profile'
   end
   
   def assign_new_daily
