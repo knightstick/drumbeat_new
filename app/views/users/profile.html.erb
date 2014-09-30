@@ -30,7 +30,7 @@
       <h1>Weekly Exercise: </h1>
       <% if @user.weekly_exercise.present? %>
         <%= render @weekly_scorecard.exercise %>
-        <%= render partial: "exercises/score_table", object: @scorecard = @weekly_scorecard %>
+        <%= render partial: "scorecards/score_table", object: @scorecard = @weekly_scorecard %>
         <hr />
         <p>
       <% else %>
@@ -54,7 +54,7 @@
       <h1>Monthly Exercise: </h1>
       <% if @user.monthly_exercise.present? %>
         <%= render @monthly_scorecard.exercise %>
-        <%= render partial: "exercises/score_table", object: @scorecard = @monthly_scorecard %>
+        <%= render partial: "scorecards/score_table", object: @scorecard = @monthly_scorecard %>
         <hr />
         <p>
       <% else %>
