@@ -60,6 +60,12 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'guard-cucumber'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
 end
 
 gem 'capybara'
