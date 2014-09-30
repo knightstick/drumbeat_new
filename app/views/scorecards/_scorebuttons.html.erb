@@ -1,23 +1,13 @@
 <div class="row center" id="scorebuttons">
   <div class="control-group">
-    <% if @scorecard.score4.blank? %>
-      <div class="col-md-4"></div>
-    <% elsif @scorecard.score60.blank? %>
-      <div class="col-md-2"></div>
-    <% end %>
     <div class="col-md-4" id="score4-form">
       <%= render partial: 'scorecards/score_button', object: @scorecard, locals: {score: 4}%>
     </div>
-    <% unless @scorecard.score4.blank? %>
-      <div class="col-md-4" id="score60-form">
-        <%= render partial: 'scorecards/score_button', locals: {score: 60} %>
-      </div>
-      <% unless @scorecard.score60.blank? %>
-        <div class="col-md-4" id="score5-form">
-          <%= render partial: 'scorecards/score_button', locals: {score: 5} %>
-        </div>
-      <% end %>
-    <% end %>
-
+    <div class="col-md-4 score4-present" id="score60-form">
+      <%= render partial: 'scorecards/score_button', locals: {score: 60} %>
+    </div>
+    <div class="col-md-4 score60-present" id="score5-form">
+      <%= render partial: 'scorecards/score_button', locals: {score: 5} %>
+    </div>
   </div>
 </div>
