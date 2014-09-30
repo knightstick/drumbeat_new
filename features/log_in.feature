@@ -6,3 +6,8 @@ Feature: Log in
 		And I fill in my details
 		And I click the "Log in" button
 		Then I should see "Single Stroke Roll"
+		
+	Scenario: Log out
+	  Given I am logged in
+	  When I click the link "Log out"
+	  Then I should see "Welcome to Drumbeat"

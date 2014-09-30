@@ -60,6 +60,7 @@ end
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 end

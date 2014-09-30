@@ -7,10 +7,6 @@ Given /^there is an Exercise$/ do
 	Exercise.create!(id: 1, name: "Single Stroke Roll", tier: 1)
 end
 
-Given /^I visit the "(.*?)" page$/ do |address|
-	visit "/#{address}"
-end
-
 When /^I fill in my details$/ do
 	fill_in "Email", with: "#{@user.email}"
 	fill_in "Password", with: "#{@user.password}"
@@ -21,14 +17,6 @@ When /^I fill in my signup details$/ do
 	fill_in "Name", with: "Chris Jewell"
 	fill_in "Password", with: 'password'
 	fill_in "Password confirmation", with: 'password'
-end
-
-When /^I click the "(.*?)" button$/ do |button|
-	click_button "#{button}" 
-end	
-
-Then /^I should see "(.*?)"$/ do |content|
-	expect(page).to have_content content
 end
 
 Given /^I am logged in$/ do
