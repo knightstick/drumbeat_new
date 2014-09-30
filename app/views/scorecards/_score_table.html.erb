@@ -1,0 +1,28 @@
+<div class="center row">
+  <div class="col-md-2">
+    <br />
+    High Scores:
+  </div>
+  <%= form_tag user_scorecard_path(current_user, @scorecard), method: :patch do %>
+  <div class="col-md-2">
+      4 bars <br/>
+      <%= text_field_tag :score4, nil, 
+      placeholder: "#{dash_nils @scorecard.score4}", 
+      class: "center" %>
+    </div>
+    <div class="col-md-2">
+      60 seconds <br/>
+      <%= text_field_tag :score60, nil, 
+      placeholder: "#{dash_nils @scorecard.score60}", 
+      class: "center" %>  </div>
+    <div class="col-md-2">
+      5 minutes <br/>
+      <%= text_field_tag :score5, nil, 
+      placeholder: "#{dash_nils @scorecard.score5}", 
+      class: "center" %>  </div> 
+    <div class="col-md-2">
+      <br />
+      <%= submit_tag "Update" %> 
+    <% end %>
+  </div>   
+</div>
