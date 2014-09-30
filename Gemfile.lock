@@ -228,6 +228,7 @@ DEPENDENCIES
   pg
   rails
   rails_12factor
+  rspec-mocks
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
