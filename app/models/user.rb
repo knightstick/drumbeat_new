@@ -81,6 +81,13 @@ class User < ActiveRecord::Base
     Scorecard.get(self.daily_exercise, self.id )
   end
 
+  def no_scores?
+    self.scorecards.each do |scorecard|
+      return false if scorecard.score4 || scorecard.score60 || scorecard.score5
+    end
+    return true
+  end
+
   private
     def assign(exercise, timeframe = "daily")
       # options: timeframe, exercise
