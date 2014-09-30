@@ -16,7 +16,7 @@ class ScorecardsController < ApplicationController
     @scorecard.submit_score(score4: params[:score4], score60: params[:score60], score5: params[:score5])
 
     respond_to do |format| 
-      format.html { redirect_to "/profile" }
+      format.html { redirect_to request.referrer }
       format.js
     end
   end
