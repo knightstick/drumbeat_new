@@ -115,3 +115,8 @@ input {
 .alert-error {
   background: #FF8080;
 }
+
+.no-score4, .no-score60, .no-score5, .all-scores,
+.score4-present, .score60-present {
+  display: none;
+}
