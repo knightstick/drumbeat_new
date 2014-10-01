@@ -12,25 +12,34 @@ $(document).ready ->
     if placeholderPresent '#score60'
       if placeholderPresent '#score5'
         # all scores set
-        $('.all-scores').show()
-        $('.score4-present').show()
-        $('.score60-present').show()
+      	allScoresSet()
       else
         # both 4 and 60 set, but not 5
-        $('.no-score5').show()
-        $('#score4-form').removeClass('col-md-offset-2')
-        $('.score4-present').show()
-        $('.score60-present').show()
+      	set4and60()
     else
       # 4 but not 60 set
-      $('.no-score60').show()
-      $('.score4-present').show()
-      $('#score4-form').addClass('col-md-offset-2')
+      set4Not60()
   else
     # no scores set
-    $('.no-score4').show()
-    $('#score4-form').addClass('col-md-offset-4')
+  	noScoresSet()
 
       
+allScoresSet = ->
+	$('.all-scores').show()
+	$('.score4-present').show()
+	$('.score60-present').show()
 
-  
+set4and60 = ->
+	$('.no-score5').show()
+	$('#score4-form').removeClass('col-md-offset-2')
+	$('.score4-present').show()
+	$('.score60-present').show()
+
+set4Not60 = ->
+	$('.no-score60').show()
+	$('.score4-present').show()
+	$('#score4-form').addClass('col-md-offset-2')
+
+noScoresSet = ->
+	$('.no-score4').show()
+	$('#score4-form').addClass('col-md-offset-4')
