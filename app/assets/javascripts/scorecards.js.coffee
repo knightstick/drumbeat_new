@@ -72,7 +72,6 @@ ScoreButton = (id) ->
     return
   @postScore = () ->
     if @isHighScore()
-      console.log "Posting to #{postUrl}"
       @currentScore = $(id).attr("placeholder")
       sendMe = {}
       sendMe[@name] = @grabScore()
@@ -81,10 +80,7 @@ ScoreButton = (id) ->
         data: sendMe
         type: 'POST'
       )
-    else
-      console.log "Not good enough."
     return
-
   return
 
 $ ->
