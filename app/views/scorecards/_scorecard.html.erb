@@ -27,3 +27,13 @@
 </div>
 
 <%= render partial: 'scorecards/scorebuttons' %>
+
+<script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var postUrl = "/users/" + <%= current_user.id %> + "/scorecards/" + <%= @scorecard.id %>
+</script>  

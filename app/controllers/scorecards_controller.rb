@@ -17,7 +17,7 @@ class ScorecardsController < ApplicationController
 
     respond_to do |format| 
       format.html { redirect_to request.referrer }
-      format.js
+      format.js { render json: @scorecard }
     end
   end
   
