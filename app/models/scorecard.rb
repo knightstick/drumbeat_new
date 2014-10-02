@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: scorecards
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  exercise_id :integer
+#  score4      :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  score60     :integer
+#  score5      :integer
+#
+
 class Scorecard < ActiveRecord::Base
   belongs_to :user
   belongs_to :exercise
