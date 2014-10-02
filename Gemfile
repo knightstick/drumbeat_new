@@ -71,3 +71,4 @@ group :test do
 end
 
 gem 'capybara'
+gem 'annotate', '~> 2.6.5'
