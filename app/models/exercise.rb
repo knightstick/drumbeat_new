@@ -12,7 +12,7 @@
 #
 
 class Exercise < ActiveRecord::Base
-  has_many :scorecards
+  has_many :scorecards, dependent: :destroy
   
   def image_url
     "http://www.freedrumlessons.com/media/drum-lessons/drum-rudiments/#{self.dashify}-1.gif"
