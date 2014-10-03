@@ -13,8 +13,12 @@
 #
 
 class Scorecard < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :exercise
+  belongs_to :user, dependent: :destroy
+  belongs_to :exercise, dependent: :destroy
+  
+  validates :user_id, presence: true
+  validates :exercise_id, presence: true
+
   
   SCORES = [:score4, :score60, :score5]
   

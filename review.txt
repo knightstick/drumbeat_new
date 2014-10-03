@@ -1,11 +1,4 @@
-- random_exercise will occasionally return nil if you delete any exercises. There must be a better method?
-
-
 - In app/models/scorecard.rb
-
-- Define your dependent settings on the relationships.
-
-- Add validations.
 
 With the model layer, always think about validations and what happens when objects are deleted, as a sort of mental checklist.
 
