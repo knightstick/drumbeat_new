@@ -8,7 +8,7 @@ class ExercisesController < ApplicationController
   def show
     @user = current_user
     @exercise = Exercise.find(params[:id])
-    @scorecard = Scorecard.get(@exercise.id, current_user.id)
+    @scorecard = Scorecard.find_or_create_by(exercise_id: @exercise.id, user_id: current_user.id)
   end
   
   def assign
@@ -16,6 +16,4 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find(rand_id)
     redirect_to @exercise
   end
-  
-
 end

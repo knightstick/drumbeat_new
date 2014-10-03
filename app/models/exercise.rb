@@ -1,5 +1,20 @@
+# == Schema Information
+#
+# Table name: exercises
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  sticking   :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  image_url  :string(255)
+#  tier       :integer
+#
+
 class Exercise < ActiveRecord::Base
-  has_many :scorecards
+  validates :name, presence: true
+
+  has_many :scorecards, dependent: :destroy
   
   def image_url
     "http://www.freedrumlessons.com/media/drum-lessons/drum-rudiments/#{self.dashify}-1.gif"
@@ -10,7 +25,9 @@ class Exercise < ActiveRecord::Base
   end
   
   def self.random_exercise
-    Exercise.where(id: rand(1..Exercise.count)).first
+    ids = Exercise.all().map {|exercise| exercise.id }
+    id = ids[rand(0...ids.length)]
+    Exercise.find(id)
   end
 
   def self.tier(i)
