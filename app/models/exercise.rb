@@ -12,6 +12,8 @@
 #
 
 class Exercise < ActiveRecord::Base
+  validates :name, presence: true
+
   has_many :scorecards, dependent: :destroy
   
   def image_url
