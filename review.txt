@@ -1,11 +1,5 @@
 In app/models/user.rb
 
-- The whole “#{timeframe}_exercise” thing is a code smell, and 9/10 it turns out a better idea to normalise it into a relationship.
-
-
-
-For your routes, have a look at ‘resources :exercise’ kinda thing, and restful routes.
-
 Doesn’t look like your controllers use strong_parameters? I’d recommend it.
 
 
@@ -21,3 +15,5 @@ Doesn’t look like your controllers use strong_parameters? I’d recommend it.
 - Yay strong params in users_controller!
 
 - Not sure using cookie_store and storing the logged in user in the session is secure. Would need to Google it. I usually use a gem for auth, like devise.
+
+- The whole “#{timeframe}_exercise” thing is a code smell, and 9/10 it turns out a better idea to normalise it into a relationship.
