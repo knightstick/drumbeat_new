@@ -1,0 +1,52 @@
+- One of the specs fails, and there aren’t many of them. That’s OK, don’t get too bogged down in specs at first.
+
+- In app/models/exercise.rb has_many :scorecards : you should define the ‘dependent’ setting to specify how scorecards are cleaned up if an exercise is deleted.
+
+- You should validate that an exercise has a name. Otherwise ‘self.name.downcase’ in dashify could through an exception if name is nil.
+
+- Use the ‘annotate’ gem to add your models’ attributes to the top of the model files as a comment. Makes things easier to follow.
+
+- random_exercise will occasionally return nil if you delete any exercises. There must be a better method?
+
+
+- In app/models/scorecard.rb
+
+- Define your dependent settings on the relationships.
+
+- Add validations.
+
+With the model layer, always think about validations and what happens when objects are deleted, as a sort of mental checklist.
+
+- I don’t really get the score4, score60, score5 bit. Could you stick a comment in, or explain it?
+
+- self.get would be more idiomatic as ‘find_or_create_by_exercise_id_and_user_id’, verbose as it is. In fact Rails might give you that anyway.
+
+
+
+In app/models/user.rb
+
+- self.make is weird. It would be more idiomatic to use User.new, then have before_save hooks to pick a random exercise if one is not set.
+
+- no_scores? could use some of Ruby’s very handy array methods, like !scorecards.any?{|scorecard| scorecard.score4 || scorecard.score60.. } which will return true if any item in the array returns true.
+
+- The whole “#{timeframe}_exercise” thing is a code smell, and 9/10 it turns out a better idea to normalise it into a relationship.
+
+
+
+For your routes, have a look at ‘resources :exercise’ kinda thing, and restful routes.
+
+Doesn’t look like your controllers use strong_parameters? I’d recommend it.
+
+
+- Your ScorecardsController update action isn’t secure: I have to be logged in, but I can still change any scorecard. There’s no check it belongs to me. Same with reset.
+
+
+- UsersController show doesn’t check you’re who you claim to be.
+
+- I’d call user.daily_scorecard in a model lifecycle hook (e.g. after_save if: :something_changed?) rather than in the controller.
+
+- assign_new_daily, assign_new_weekly and assign_new_monthly are a code smell, can’t we pass the time period in as a param? Or at least refactor that code to reduce repetition.
+
+- Yay strong params in users_controller!
+
+- Not sure using cookie_store and storing the logged in user in the session is secure. Would need to Google it. I usually use a gem for auth, like devise.
