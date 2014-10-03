@@ -1,7 +1,3 @@
-- One of the specs fails, and there aren’t many of them. That’s OK, don’t get too bogged down in specs at first.
-
-- In app/models/exercise.rb has_many :scorecards : you should define the ‘dependent’ setting to specify how scorecards are cleaned up if an exercise is deleted.
-
 - You should validate that an exercise has a name. Otherwise ‘self.name.downcase’ in dashify could through an exception if name is nil.
 
 - Use the ‘annotate’ gem to add your models’ attributes to the top of the model files as a comment. Makes things easier to follow.
