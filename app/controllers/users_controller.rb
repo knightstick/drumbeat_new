@@ -12,9 +12,9 @@ class UsersController < ApplicationController
   
   def profile
     @user = current_user
-    @daily_scorecard = Scorecard.get(@user.daily_exercise, @user.id)
-    @weekly_scorecard = Scorecard.get(@user.weekly_exercise, @user.id)
-    @monthly_scorecard = Scorecard.get(@user.monthly_exercise, @user.id)
+    @daily_scorecard =   Scorecard.find_or_create_by(exercise_id: @user.daily_exercise,   user_id: @user.id)
+    @weekly_scorecard =  Scorecard.find_or_create_by(exercise_id: @user.weekly_exercise,  user_id: @user.id)
+    @monthly_scorecard = Scorecard.find_or_create_by(exercise_id: @user.monthly_exercise, user_id: @user.id)
   end
 
   def create

@@ -36,12 +36,4 @@ class Scorecard < ActiveRecord::Base
       update(score => nil) 
     end
   end
-  
-  def self.get(exercise_id, user_id)
-    scorecard = Scorecard.where(exercise_id: exercise_id, user_id: user_id).last
-    if scorecard.nil?
-      scorecard = Scorecard.create(exercise_id: exercise_id, user_id: user_id)
-    end
-    scorecard
-  end
 end

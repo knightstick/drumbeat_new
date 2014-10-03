@@ -1,9 +1,5 @@
 - In app/models/scorecard.rb
 
-With the model layer, always think about validations and what happens when objects are deleted, as a sort of mental checklist.
-
-- I don’t really get the score4, score60, score5 bit. Could you stick a comment in, or explain it?
-
 - self.get would be more idiomatic as ‘find_or_create_by_exercise_id_and_user_id’, verbose as it is. In fact Rails might give you that anyway.
 
 

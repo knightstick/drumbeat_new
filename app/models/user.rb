@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
 
   
   def daily_scorecard
-    Scorecard.get(self.daily_exercise, self.id )
+    Scorecard.find_or_create_by(exercise_id: self.daily_exercise, user_id: self.id )
   end
 
   def no_scores?
