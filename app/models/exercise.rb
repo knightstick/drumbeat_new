@@ -25,7 +25,9 @@ class Exercise < ActiveRecord::Base
   end
   
   def self.random_exercise
-    Exercise.where(id: rand(1..Exercise.count)).first
+    ids = Exercise.all().map {|exercise| exercise.id }
+    id = ids[rand(0...ids.length)]
+    Exercise.find(id)
   end
 
   def self.tier(i)
