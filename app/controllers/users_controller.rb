@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.make(user_params)
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "New user created!"
       session[:user_id] = @user.id
