@@ -16,6 +16,4 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.find(rand_id)
     redirect_to @exercise
   end
-  
-
 end

@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by(email: session_params[:email])
+    if @user && @user.authenticate(session_params[:password])
       flash[:notice] = "Logged in as #{@user.name}"
       session[:user_id] = @user.id
       redirect_to root_path
@@ -21,5 +21,9 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "You've been logged out successfully"
     redirect_to root_path
+  end
+
+  def session_params
+    params.permit(:email, :password)
   end
 end

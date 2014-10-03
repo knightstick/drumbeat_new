@@ -3,7 +3,7 @@ class ScorecardsController < ApplicationController
   
   
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(scorecard_params[:user_id])
     @scorecard = Scorecard.find(params[:id])
   end
   
@@ -13,7 +13,7 @@ class ScorecardsController < ApplicationController
   
   def update
     @scorecard = Scorecard.find(params[:id])
-    @scorecard.submit_score(score4: params[:score4], score60: params[:score60], score5: params[:score5])
+    @scorecard.submit_score(scorecard_params)
 
     respond_to do |format| 
       format.html { redirect_to request.referrer }
@@ -25,5 +25,9 @@ class ScorecardsController < ApplicationController
     @scorecard = Scorecard.find(params[:id])
     @scorecard.reset_scores
     redirect_to profile_path
+  end
+
+  def scorecard_params
+    params.require(:scorecard).permit(:score4, :score60, :score5)
   end
 end
