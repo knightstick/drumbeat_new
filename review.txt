@@ -1,19 +1,9 @@
-In app/models/user.rb
-
-Doesn’t look like your controllers use strong_parameters? I’d recommend it.
-
-
-- Your ScorecardsController update action isn’t secure: I have to be logged in, but I can still change any scorecard. There’s no check it belongs to me. Same with reset.
-
-
-- UsersController show doesn’t check you’re who you claim to be.
-
-- I’d call user.daily_scorecard in a model lifecycle hook (e.g. after_save if: :something_changed?) rather than in the controller.
-
 - assign_new_daily, assign_new_weekly and assign_new_monthly are a code smell, can’t we pass the time period in as a param? Or at least refactor that code to reduce repetition.
-
-- Yay strong params in users_controller!
 
 - Not sure using cookie_store and storing the logged in user in the session is secure. Would need to Google it. I usually use a gem for auth, like devise.
 
 - The whole “#{timeframe}_exercise” thing is a code smell, and 9/10 it turns out a better idea to normalise it into a relationship.
+
+- Your ScorecardsController update action isn’t secure: I have to be logged in, but I can still change any scorecard. There’s no check it belongs to me. Same with reset.
+
+- UsersController show doesn’t check you’re who you claim to be.
