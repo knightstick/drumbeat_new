@@ -97,10 +97,7 @@ class User < ActiveRecord::Base
   end
 
   def no_scores?
-    self.scorecards.each do |scorecard|
-      return false if scorecard.score4 || scorecard.score60 || scorecard.score5
-    end
-    return true
+    !self.scorecards.any? {|scorecard| scorecard.score4 || scorecard.score60 || scorecard.score5 }
   end
 
   private

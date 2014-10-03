@@ -1,9 +1,5 @@
 In app/models/user.rb
 
-- self.make is weird. It would be more idiomatic to use User.new, then have before_save hooks to pick a random exercise if one is not set.
-
-- no_scores? could use some of Ruby’s very handy array methods, like !scorecards.any?{|scorecard| scorecard.score4 || scorecard.score60.. } which will return true if any item in the array returns true.
-
 - The whole “#{timeframe}_exercise” thing is a code smell, and 9/10 it turns out a better idea to normalise it into a relationship.
 
 
