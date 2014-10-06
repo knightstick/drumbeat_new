@@ -21,6 +21,7 @@ Workspace::Application.routes.draw do
   post "assign/:id" => 'users#assign', as: 'assign'
 
   get "scorecards" => 'scorecards#index', as: 'scorecards'
+  post "scorecards"=> 'scorecards#assign'
   
   get "pick_new_daily" => "users#assign_new_daily", as: 'assign_new_daily'
   get "pick_new_weekly" => "users#assign_new_weekly", as: 'assign_new_weekly'

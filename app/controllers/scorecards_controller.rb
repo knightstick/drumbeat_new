@@ -27,7 +27,13 @@ class ScorecardsController < ApplicationController
     redirect_to profile_path
   end
 
-  def scorecard_params
-    params.require(:scorecard).permit(:score4, :score60, :score5)
+  def assign
+    @user.assign_scorecard(timeframe: params[:timeframe])
+    redirect_to profile_path
   end
+
+  private
+    def scorecard_params
+      params.require(:scorecard).permit(:score4, :score60, :score5)
+    end
 end
