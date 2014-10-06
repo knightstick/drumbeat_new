@@ -28,7 +28,7 @@ class ScorecardsController < ApplicationController
   end
 
   def assign
-    @user.assign_scorecard(timeframe: params[:timeframe])
+    @user.assign_scorecard(timeframe: params[:timeframe], exercise: params[:exercise])
     redirect_to profile_path
   end
 

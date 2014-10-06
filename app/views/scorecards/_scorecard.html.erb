@@ -22,8 +22,7 @@
   <p>
     Give up on this one? 
     <div class="row">
-    <%= form_tag scorecards_path(foo: 'bar'), method: :post do %>
-      <%= hidden_field_tag :timeframe, 'daily' %>
+    <%= form_tag scorecards_path(timeframe: 'daily'), method: :post do %>
       <%= submit_tag "Get a new one", class: "btn btn-default col-md-4 col-md-offset-2" %>
     <% end %>
       <%= link_to "Browse all exercises", exercises_path, class: "btn btn-default col-md-4" %>
