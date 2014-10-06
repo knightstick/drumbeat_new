@@ -19,7 +19,7 @@
 class User < ActiveRecord::Base
   has_many :scorecards
   
-  before_save do 
+  before_create do 
     self.email = email.downcase
     self.daily_exercise = Exercise.random_exercise.try(:id)
     self.daily_updated_at = Time.now
@@ -44,15 +44,15 @@ class User < ActiveRecord::Base
   end
   
   def assign_new_daily
-    assign_daily(force: true)
+    assign_scorecard
   end
 
   def assign_new_weekly
-    assign_weekly(force: true)
+    assign_scorecard(timeframe: 'weekly')
   end
 
   def assign_new_monthly
-    assign_monthly(force: true)
+    assign_scorecard(timeframe: 'monthly')
   end
   
   def assign_daily(options = {})
@@ -100,9 +100,17 @@ class User < ActiveRecord::Base
     !self.scorecards.any? {|scorecard| scorecard.score4 || scorecard.score60 || scorecard.score5 }
   end
 
+
+  def assign_scorecard(options = {})
+    assign_options = {}
+    assign_options[:exercise] = options[:exercise]||= Exercise.random_exercise.id
+    assign_options[:timeframe] = options[:timeframe] ||= 'daily'
+    assign(assign_options)
+  end
+
   private
-    def assign(exercise, timeframe = "daily")
-      # options: timeframe, exercise
-      update_attributes("#{timeframe}_exercise".to_sym => exercise, "#{timeframe}_updated_at".to_sym => Time.now)
+    def assign(options = {})
+      self.update!("#{options[:timeframe]}_exercise" => options[:exercise])
+      self.update!("#{options[:timeframe]}_updated_at" => Time.now)
     end
 end
