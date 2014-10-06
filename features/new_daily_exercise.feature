@@ -6,5 +6,5 @@ Feature: Choose a new daily exercise
 
     
     Scenario: Click 'Give me a new one'
-      When I click the link "Give me a new one"
+      When I click the "Get a new one" button
       Then I should see "Single Stroke 2"
