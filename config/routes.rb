@@ -12,11 +12,15 @@ Workspace::Application.routes.draw do
   get "login" => "sessions#new", as: "login"
   post "login" => "sessions#create"
   
-  get "profile" => 'users#profile', as: 'profile'
+  get "me" => 'users#profile', as: 'profile'
+  get 'me/practice' => 'users#practice', as: 'practice_room'
+  
 
   get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
   patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
+  post 'me/scorecards/:id/reset' => 'scorecards#reset', as: 'reset_scorecard'
+  post 'me/scorecards' => 'scorecards#assign', as: 'create_scorecards'
 
   # get "scorecards" => 'scorecards#index', as: 'scorecards'
   # post "scorecards"=> 'scorecards#assign'

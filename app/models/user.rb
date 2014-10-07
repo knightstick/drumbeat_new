@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  attr_accessor :current_scorecards
+
   def needs_new?(options = {})
     timeframe = options[:timeframe] ||= 'daily'
     times = {daily: 24.hours, weekly: 7.days, monthly: 1.month}
