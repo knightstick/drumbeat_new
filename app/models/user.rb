@@ -17,7 +17,7 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :scorecards
+  has_many :scorecards, dependent: :destroy
   
   before_create do 
     self.email = email.downcase
