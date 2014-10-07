@@ -3,11 +3,9 @@ Workspace::Application.routes.draw do
   
   resources :exercises, only: [:index, :show]
 
-  resources :users, except: [:index] do
-    resources :scorecards, only: [:index, :show, :update]
-  end
-
-
+  resources :users, except: [:index]  # do
+    # resources :scorecards, only: [:index, :show, :update]
+  # end
 
   get "logout" => "sessions#destroy", as: "logout"
   get "signup" => "users#new", as: "signup"
@@ -16,8 +14,12 @@ Workspace::Application.routes.draw do
   
   get "profile" => 'users#profile', as: 'profile'
 
-  get "scorecards" => 'scorecards#index', as: 'scorecards'
-  post "scorecards"=> 'scorecards#assign'
+  get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
+  get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
+  patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
+
+  # get "scorecards" => 'scorecards#index', as: 'scorecards'
+  # post "scorecards"=> 'scorecards#assign'
   
-  get "users/:user_id/scorecards/:id/reset" => "scorecards#reset", as: 'reset_scorecard'
+  # get "users/:user_id/scorecards/:id/reset" => "scorecards#reset", as: 'reset_scorecard'
 end

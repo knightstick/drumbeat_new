@@ -3,16 +3,17 @@ class ScorecardsController < ApplicationController
   
   
   def show
-    @user = User.find(scorecard_params[:user_id])
-    @scorecard = Scorecard.find(params[:id])
+    @user = current_user
+    @scorecard = @user.scorecards.find(params[:id])
   end
   
   def index
-    @scorecards = Scorecard.where(user_id: current_user)
+    @scorecards = User.find(current_user.id).scorecards
   end
   
   def update
-    @scorecard = Scorecard.find(params[:id])
+    @user = current_user
+    @scorecard = @user.scorecards.find(params[:id])
     @scorecard.submit_score(scorecard_params)
 
     respond_to do |format| 

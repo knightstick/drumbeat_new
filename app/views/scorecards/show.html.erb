@@ -1,13 +1,23 @@
 <%= render @scorecard.exercise %>
 
-<%= render partial: 'scorebuttons' %>
+<%= form_for @scorecard do |f| %>
+	<%= f.label :score4 %>
+	<%= f.text_field :score4 %>
 
+	<%= f.label :score60 %>
+	<%= f.text_field :score60 %>
+
+	<%= f.label :score5 %>
+	<%= f.text_field :score5 %>
+
+	<%= f.submit %>
+<% end %>
 
 <div class="row">
   <div class="control-group"></div>
     <div class="col-md-4 col-md-offset-4 center top-padding">
       <p>
-        <%= link_to "RESET scores", reset_scorecard_path, class: "btn btn-lrg btn-danger" %>  
+        <%= link_to "RESET scores", 'fakelink', class: "btn btn-lrg btn-danger" %>  
       </p>
     </div>
   </div>
