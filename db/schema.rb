@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926032203) do
+ActiveRecord::Schema.define(version: 20141007075943) do
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20140926032203) do
     t.string   "image_url"
     t.integer  "tier"
   end
+
+  create_table "regimes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "daily"
+    t.integer  "weekly"
+    t.integer  "monthly"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "regimes", ["user_id"], name: "index_regimes_on_user_id"
 
   create_table "scorecards", force: true do |t|
     t.integer  "user_id"

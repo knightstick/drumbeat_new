@@ -1,4 +1,12 @@
 Workspace::Application.routes.draw do
+  get 'regime/create'
+
+  get 'regime/show'
+
+  get 'regime/update'
+
+  get 'regime/destroy'
+
   root 'home#index'
   
   resources :exercises, only: [:index, :show]
@@ -14,7 +22,8 @@ Workspace::Application.routes.draw do
   
   get "me" => 'users#profile', as: 'profile'
   get 'me/practice' => 'users#practice', as: 'practice_room'
-  
+  get 'me/regime' => 'regime#show', as: 'regime'
+  post 'me/regime' => 'regime#create', as: 'create_regime'
 
   get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
