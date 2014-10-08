@@ -6,6 +6,8 @@
 #  scorecard_id :integer
 #  created_at   :datetime
 #  updated_at   :datetime
+#  timeframe    :string(255)
+#  routine_id   :integer
 #
 
 require 'rails_helper'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008015932) do
+ActiveRecord::Schema.define(version: 20141008030528) do
 
   create_table "assignments", force: true do |t|
     t.integer  "scorecard_id"
@@ -71,12 +71,6 @@ ActiveRecord::Schema.define(version: 20141008015932) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "name"
-    t.integer  "daily_exercise"
-    t.datetime "daily_updated_at"
-    t.integer  "weekly_exercise"
-    t.integer  "monthly_exercise"
-    t.datetime "weekly_updated_at"
-    t.datetime "monthly_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
