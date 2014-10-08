@@ -52,4 +52,16 @@ class Routine < ActiveRecord::Base
 			return false
 		end
 	end	
+
+	def clear_expired
+		if self.daily.updated_at < 24.hours.ago
+			self.assign(timeframe: 'daily')
+		end
+		if self.weekly.updated_at < 7.days.ago
+			self.assign(timeframe: 'weekly')
+		end
+		if self.monthly.updated_at < 1.month.ago
+			self.assign(timeframe: 'monthly')
+		end
+	end
 end

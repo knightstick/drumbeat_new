@@ -8,6 +8,7 @@ class RoutinesController < ApplicationController
 			@routine = Routine.create(user: current_user)
 			current_user.routine = @routine
 		end
+		@routine.clear_expired
 	end
 
 	def create
