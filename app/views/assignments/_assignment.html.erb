@@ -1,11 +1,6 @@
 
 	<h1><%= assignment.timeframe.capitalize %> Exercise: </h1>
-<div class="row">
-	<%= assignment.updated_at %>
-<!-- 	<div class="col-md-9"> -->		
-<%= render assignment.scorecard.exercise %>
-
-<!-- 	<div class="col-md-3">
-		<% link_to "SCORE", assignment.scorecard, class: "btn btn-lg btn-primary vertical-align center" %>
-	</div> -->
+<div class="row">	
+	<%= render assignment.scorecard.exercise %>
+	<%= link_to "Score this exercise", assignment.scorecard %>
 </div>
