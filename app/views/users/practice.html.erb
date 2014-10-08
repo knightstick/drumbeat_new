@@ -1,0 +1,6 @@
+<h1>Practice Room</h1>
+<% if @scorecards.present? %>
+	<% @scorecards.each do |scorecard| %>
+		<h2><%= scorecard.exercise %></h2>
+	<% end %>
+<% end %>

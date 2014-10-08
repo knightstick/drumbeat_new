@@ -1,0 +1,11 @@
+<h1>Today's Routine:</h1>
+
+<% timeframes = ['daily', 'weekly', 'monthly'] %>
+
+<% timeframes.each do |time| %>
+	<% assignment = @routine.send(time) %>
+	<%= render assignment %>
+<% end %>
+
+<%= link_to "Create a routine", routine_path,
+			method: :post %> 

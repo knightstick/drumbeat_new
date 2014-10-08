@@ -12,7 +12,7 @@
 //
 //
 //= require jquery
-//= reequire jquery_ujs
+//= require jquery_ujs
 //= require jquery.turbolinks
 
 //= require bootstrap-sprockets

@@ -3,7 +3,7 @@
     <br />
     High Scores:
   </div>
-  <%= form_tag user_scorecard_path(current_user, @scorecard), method: :patch do %>
+  <%= form_tag scorecard_path(@scorecard), method: :patch do %>
   <div class="col-md-2">
       4 bars <br/>
       <%= text_field_tag :score4, nil, 

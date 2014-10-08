@@ -1,18 +1,24 @@
 class ScorecardsController < ApplicationController
   before_action :login_required
   
-  
+  def create
+    @user = current_user
+    @scorecard = @user.scorecards.find_or_create_by(exercise_id: params[:exercise])
+    redirect_to @scorecard
+  end
+
   def show
-    @user = User.find(scorecard_params[:user_id])
-    @scorecard = Scorecard.find(params[:id])
+    @user = current_user
+    @scorecard = @user.scorecards.find(params[:id])
   end
   
   def index
-    @scorecards = Scorecard.where(user_id: current_user)
+    @scorecards = User.find(current_user.id).scorecards
   end
   
   def update
-    @scorecard = Scorecard.find(params[:id])
+    @user = current_user
+    @scorecard = @user.scorecards.find(params[:id])
     @scorecard.submit_score(scorecard_params)
 
     respond_to do |format| 
@@ -22,14 +28,9 @@ class ScorecardsController < ApplicationController
   end
   
   def reset
-    @scorecard = Scorecard.find(params[:id])
+    @scorecard = current_user.scorecards.find(params[:id])
     @scorecard.reset_scores
-    redirect_to profile_path
-  end
-
-  def assign
-    @user.assign_scorecard(timeframe: params[:timeframe], exercise: params[:exercise])
-    redirect_to profile_path
+    redirect_to @scorecard
   end
 
   private
