@@ -10,6 +10,8 @@
 class Routine < ActiveRecord::Base
 	belongs_to :user
 	has_many :assignments
+
+	before_create :assign
 	
 	def current(timeframe = nil)
 		if timeframe
@@ -24,6 +26,16 @@ class Routine < ActiveRecord::Base
 			current(name)
 		else
 			super
+		end
+	end
+
+	def assign
+		scorecards = []
+		3.times { scorecards << Scorecard.find_or_create_by(user: self.user, exercise: Exercise.random_exercise)}
+		timeframes = ['daily', 'weekly', 'monthly']
+		timeframes.each_with_index do |timeframe, i|
+			self.assignments.new(routine_id: self, timeframe: timeframe,
+				scorecard: scorecards[i]).id
 		end
 	end	
 end
