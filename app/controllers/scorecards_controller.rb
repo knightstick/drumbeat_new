@@ -1,14 +1,13 @@
 class ScorecardsController < ApplicationController
   before_action :login_required
+  before_action :current_user, except: [:random, :index]
   
   def create
-    @user = current_user
     @scorecard = @user.scorecards.find_or_create_by(exercise_id: params[:exercise])
     redirect_to @scorecard
   end
 
   def show
-    @user = current_user
     @scorecard = @user.scorecards.find(params[:id])
   end
 
@@ -23,7 +22,6 @@ class ScorecardsController < ApplicationController
   end
   
   def update
-    @user = current_user
     @scorecard = @user.scorecards.find(params[:id])
     @scorecard.submit_score(scorecard_params)
 

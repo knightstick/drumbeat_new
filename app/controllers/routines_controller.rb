@@ -18,7 +18,8 @@ class RoutinesController < ApplicationController
 		if @routine.save
 			redirect_to '/me/routine'
 		else
-			render json: 'something went wrong'
+			flash[:error] = "Something went wrong..."
+			redirect_to profile_path
 		end
 	end
 

@@ -26,25 +26,6 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_scorecards
 
-  # def needs_new?(options = {})
-  #   timeframe = options[:timeframe] ||= 'daily'
-  #   times = {daily: 24.hours, weekly: 7.days, monthly: 1.month}
-  #   self.send("#{timeframe}_updated_at").nil? || self.send("#{timeframe}_updated_at") < (DateTime.now - times[timeframe.to_sym])
-  # end
-  
-  # def method_missing(name, *args)
-  #   if name =~ /needs_new/
-  #     timeframe = name.to_s.split("_")[-1].slice(0...-1)
-  #     self.send("needs_new?", timeframe: timeframe)
-  #   else
-  #     super
-  #   end
-  # end
-
-  # def daily_scorecard
-  #   Scorecard.find_or_create_by(exercise_id: self.daily_exercise, user_id: self.id )
-  # end
-
   def no_scores?
     !self.scorecards.any? {|scorecard| scorecard.score4 || scorecard.score60 || scorecard.score5 }
   end
