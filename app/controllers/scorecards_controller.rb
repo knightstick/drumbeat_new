@@ -1,7 +1,12 @@
 class ScorecardsController < ApplicationController
   before_action :login_required
   
-  
+  def create
+    @user = current_user
+    @scorecard = @user.scorecards.find_or_create_by(exercise: params[:exercise])
+    redirect_to @scorecard
+  end
+
   def show
     @user = current_user
     @scorecard = @user.scorecards.find(params[:id])
@@ -26,11 +31,6 @@ class ScorecardsController < ApplicationController
     @scorecard = current_user.scorecards.find(params[:id])
     @scorecard.reset_scores
     redirect_to @scorecard
-  end
-
-  def assign
-    @user.assign_scorecard(timeframe: params[:timeframe], exercise: params[:exercise])
-    redirect_to practice_room_path
   end
 
   private

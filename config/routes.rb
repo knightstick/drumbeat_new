@@ -20,7 +20,7 @@ Workspace::Application.routes.draw do
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
   patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
   post 'me/scorecards/:id/reset' => 'scorecards#reset', as: 'reset_scorecard'
-  post 'me/scorecards' => 'scorecards#assign', as: 'create_scorecards'
+  post 'me/scorecards' => 'scorecards#create', as: 'create_scorecards'
 
   # get "scorecards" => 'scorecards#index', as: 'scorecards'
   # post "scorecards"=> 'scorecards#assign'

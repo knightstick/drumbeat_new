@@ -1,18 +1,13 @@
 <%= render @exercise %>
 
-<div class="row">
-  <div class="control-group"></div>
-    <div class="col-md-4 col-md-offset-4 center top-padding">
-        <%= form_tag routine_path(exercise: @exercise.id), method: :patch do %>
-          <p>
-          Make this my exercise for <%= select_tag "timeframe", "<option value='daily'>Today</option><option value='weekly'>This Week</option><option value='monthly'>This Month</option>".html_safe %>
-          <%= link_to "Try this exercise", class: "btn btn-default btn-danger" %>
-          </p>
-        <% end %>  
-        <p>
-      	<%= link_to "Back to All Exercises", exercises_path %>
-      </p>
-    </div>
-  </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="row center">
+	<div class="btn-group">
+	<%= link_to "Try this exercise", scorecards_path(exercise: @exercise.id), method: :post, class: "btn btn-lg btn-primary" %>
+	</div>
 </div>
-
