@@ -2,18 +2,12 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  email              :string(255)
-#  created_at         :datetime
-#  updated_at         :datetime
-#  password_digest    :string(255)
-#  name               :string(255)
-#  daily_exercise     :integer
-#  daily_updated_at   :datetime
-#  weekly_exercise    :integer
-#  monthly_exercise   :integer
-#  weekly_updated_at  :datetime
-#  monthly_updated_at :datetime
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  password_digest :string(255)
+#  name            :string(255)
 #
 
 class User < ActiveRecord::Base

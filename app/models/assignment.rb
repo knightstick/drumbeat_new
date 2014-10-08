@@ -15,6 +15,6 @@ class Assignment < ActiveRecord::Base
   belongs_to :routine
 
   def exercise
-  	Exercise.find(scorecard_id)
+  	Exercise.find(scorecard.exercise_id)
   end
 end
