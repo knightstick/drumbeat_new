@@ -24,27 +24,12 @@ class UsersController < ApplicationController
   
   def profile
     @user = current_user
-    # @daily_scorecard =   Scorecard.find_or_create_by(exercise_id: @user.daily_exercise,   user_id: @user.id)
-    # @weekly_scorecard =  Scorecard.find_or_create_by(exercise_id: @user.weekly_exercise,  user_id: @user.id)
-    # @monthly_scorecard = Scorecard.find_or_create_by(exercise_id: @user.monthly_exercise, user_id: @user.id)
   end
 
   def practice
     @user = current_user
     @scorecards = @user.current_scorecards
   end
-
-
-  # def assign
-  #   if params["timeframe"] == "Today"
-  #     @user.assign_daily(force: true, exercise: (params[:id]))
-  #   elsif params["timeframe"] == "This Week"
-  #     @user.assign_weekly(force: true, exercise: (params[:id]))
-  #   elsif params["timeframe"] == "This Month"
-  #     @user.assign_monthly(force: true, exercise: (params[:id]))
-  #   end
-  #   redirect_to '/profile'
-  # end
 
   private
     def user_params

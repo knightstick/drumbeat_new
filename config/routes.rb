@@ -3,9 +3,7 @@ Workspace::Application.routes.draw do
   
   resources :exercises, only: [:index, :show]
 
-  resources :users, except: [:index]  # do
-    # resources :scorecards, only: [:index, :show, :update]
-  # end
+  resources :users, only: [:create, :show]
 
   get "logout" => "sessions#destroy", as: "logout"
   get "signup" => "users#new", as: "signup"

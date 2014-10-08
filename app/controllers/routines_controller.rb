@@ -1,4 +1,6 @@
 class RoutinesController < ApplicationController
+  before_action :login_required
+	
 	def show
 		if current_user
 			@routine = current_user.routine
