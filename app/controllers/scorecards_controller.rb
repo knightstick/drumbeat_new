@@ -11,6 +11,12 @@ class ScorecardsController < ApplicationController
     @user = current_user
     @scorecard = @user.scorecards.find(params[:id])
   end
+
+  def random
+    exercise = Exercise.random_exercise
+    @scorecard = current_user.scorecards.find_or_create_by(exercise: exercise)
+    redirect_to @scorecard
+  end
   
   def index
     @scorecards = User.find(current_user.id).scorecards
