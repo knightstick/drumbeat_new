@@ -17,6 +17,7 @@ Workspace::Application.routes.draw do
   patch 'me/routine' => 'routines#update'
   
   get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
+  get 'me/scorecards/random' => 'scorecards#random', as: 'random_scorecard'
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
   patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
   post 'me/scorecards/:id/reset' => 'scorecards#reset', as: 'reset_scorecard'
