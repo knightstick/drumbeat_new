@@ -12,7 +12,7 @@ class Routine < ActiveRecord::Base
 	belongs_to :user
 	has_many :assignments
 
-	before_create :assign
+	before_create :pre_assign
 	
 	def current(timeframe = nil)
 		if timeframe
@@ -30,13 +30,26 @@ class Routine < ActiveRecord::Base
 		end
 	end
 
-	def assign
+	def pre_assign
 		scorecards = []
 		3.times { scorecards << Scorecard.find_or_create_by(user: self.user, exercise: Exercise.random_exercise)}
 		timeframes = ['daily', 'weekly', 'monthly']
 		timeframes.each_with_index do |timeframe, i|
 			self.assignments.new(routine_id: self, timeframe: timeframe,
 				scorecard: scorecards[i]).id
+		end
+	end
+
+	def assign(options = {})
+		if options[:timeframe]
+			if options[:exercise].present?
+				scorecard = Scorecard.find_or_create_by(user: self.user, exercise_id: options[:exercise])
+			else 
+				scorecard = Scorecard.find_or_create_by(user: self.user, exercise: Exercise.random_exercise)
+			end
+			self.assignments.create(timeframe: options[:timeframe], scorecard: scorecard)
+		else
+			return false
 		end
 	end	
 end

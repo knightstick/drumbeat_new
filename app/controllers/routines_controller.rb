@@ -18,4 +18,9 @@ class RoutinesController < ApplicationController
 			render json: 'something went wrong'
 		end
 	end
+
+	def update
+		current_user.routine.assign(timeframe: params[:timeframe], exercise: params[:exercise])
+		redirect_to '/me/routine'
+	end
 end

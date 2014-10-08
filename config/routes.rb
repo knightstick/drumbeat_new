@@ -15,8 +15,9 @@ Workspace::Application.routes.draw do
   get "me" => 'users#profile', as: 'profile'
 
   get 'me/routine' => 'routines#show', as: 'routine'
-  post 'me/routine' => 'routines#create', as: 'create_routine'
-
+  post 'me/routine' => 'routines#create'
+  patch 'me/routine' => 'routines#update'
+  
   get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
   patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
