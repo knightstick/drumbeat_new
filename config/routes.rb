@@ -21,9 +21,4 @@ Workspace::Application.routes.draw do
   patch 'me/scorecards/:id' => 'scorecards#update', as: 'update_scorecard'
   post 'me/scorecards/:id/reset' => 'scorecards#reset', as: 'reset_scorecard'
   post 'me/scorecards' => 'scorecards#create', as: 'create_scorecards'
-
-  # get "scorecards" => 'scorecards#index', as: 'scorecards'
-  # post "scorecards"=> 'scorecards#assign'
-  
-  # get "users/:user_id/scorecards/:id/reset" => "scorecards#reset", as: 'reset_scorecard'
 end

@@ -18,7 +18,7 @@ class Routine < ActiveRecord::Base
 		if timeframe
 			Assignment.where(routine: self, timeframe: timeframe).last
 		else
-			Assignment.where(routine: self)
+			Assignment.where(routine: self).select(:timeframe).uniq
 		end
 	end
 
