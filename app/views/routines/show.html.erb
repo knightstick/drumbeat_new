@@ -1,0 +1,18 @@
+<h1>Today's Routine:</h1>
+<% if @routine.current.present? %>
+	<% if @routine.daily %>
+		<h2>Daily Exercise: <%= link_to @routine.daily.exercise.name, @routine.daily.scorecard %></h2>
+	<% end %>
+	<% if @routine.weekly %>
+		<h2>Weekly Exercise: <%= link_to @routine.weekly.exercise.name, @routine.weekly.scorecard %></h2>
+	<% end %>
+	<% if @routine.monthly %>
+		<h2>Monthly Exercise: <%= link_to @routine.monthly.exercise.name , @routine.monthly.scorecard %></h2>
+	<% end %>
+<% else %>
+	No routine created yet.
+<% end %>
+
+
+<%= link_to "Create a routine", create_routine_path,
+			method: :post %> 

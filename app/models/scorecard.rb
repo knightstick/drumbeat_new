@@ -15,6 +15,7 @@
 class Scorecard < ActiveRecord::Base
   belongs_to :user
   belongs_to :exercise
+  has_many :assignments
   
   validates :user_id, presence: true
   validates :exercise_id, presence: true

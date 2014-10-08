@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007075943) do
+ActiveRecord::Schema.define(version: 20141008015932) do
+
+  create_table "assignments", force: true do |t|
+    t.integer  "scorecard_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "timeframe"
+    t.integer  "routine_id"
+  end
+
+  add_index "assignments", ["routine_id"], name: "index_assignments_on_routine_id"
+  add_index "assignments", ["scorecard_id"], name: "index_assignments_on_scorecard_id"
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -32,6 +43,14 @@ ActiveRecord::Schema.define(version: 20141007075943) do
   end
 
   add_index "regimes", ["user_id"], name: "index_regimes_on_user_id"
+
+  create_table "routines", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "routines", ["user_id"], name: "index_routines_on_user_id"
 
   create_table "scorecards", force: true do |t|
     t.integer  "user_id"

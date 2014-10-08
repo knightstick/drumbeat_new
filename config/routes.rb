@@ -1,12 +1,4 @@
 Workspace::Application.routes.draw do
-  get 'regime/create'
-
-  get 'regime/show'
-
-  get 'regime/update'
-
-  get 'regime/destroy'
-
   root 'home#index'
   
   resources :exercises, only: [:index, :show]
@@ -19,11 +11,11 @@ Workspace::Application.routes.draw do
   get "signup" => "users#new", as: "signup"
   get "login" => "sessions#new", as: "login"
   post "login" => "sessions#create"
-  
+
   get "me" => 'users#profile', as: 'profile'
-  get 'me/practice' => 'users#practice', as: 'practice_room'
-  get 'me/regime' => 'regime#show', as: 'regime'
-  post 'me/regime' => 'regime#create', as: 'create_regime'
+
+  get 'me/routine' => 'routines#show', as: 'routine'
+  post 'me/routine' => 'routines#create', as: 'create_routine'
 
   get 'me/scorecards' => 'scorecards#index', as: 'scorecards'
   get 'me/scorecards/:id' => 'scorecards#show', as: 'scorecard'
