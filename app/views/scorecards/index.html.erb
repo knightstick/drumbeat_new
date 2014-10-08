@@ -1,11 +1,10 @@
 <% if current_user.no_scores? %>
 	<div class="center">
-    <p>You've not set any scores yet.</p>
-    <%= form_tag scorecards_path(timeframe: 'daily'), method: :post do %>
-      <%= submit_tag "Get a new daily exercise", class: "btn btn-default" %>
-    <% end %>
-      <%= link_to "browse all exercises", exercises_path, class: "btn btn-default" %>.
-  </div>
+    <p>You've not set any scores yet. <br />
+      <hr />
+      Why not 
+      <%= link_to "browse all exercises", exercises_path %> or 
+      <%= link_to "get a routine to practise", routine_path %>?
 <% else %>
 <div class="table-responsive">
     <table class="table table-striped">
