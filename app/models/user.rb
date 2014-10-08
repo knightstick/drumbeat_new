@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
   
   before_create do 
     self.email = email.downcase
-    self.daily_exercise = Exercise.random_exercise.try(:id)
-    self.daily_updated_at = Time.now
   end
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -50,19 +48,4 @@ class User < ActiveRecord::Base
   def no_scores?
     !self.scorecards.any? {|scorecard| scorecard.score4 || scorecard.score60 || scorecard.score5 }
   end
-
-
-
-  # def assign_scorecard(options = {})
-  #   assign_options = {}
-  #   assign_options[:exercise] = options[:exercise]||= Exercise.random_exercise.id
-  #   assign_options[:timeframe] = options[:timeframe] ||= 'daily'
-  #   assign(assign_options)
-  # end
-
-  # private
-  #   def assign(options = {})
-  #     self.update!("#{options[:timeframe]}_exercise" => options[:exercise])
-  #     self.update!("#{options[:timeframe]}_updated_at" => Time.now)
-  #   end
 end

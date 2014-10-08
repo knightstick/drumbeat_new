@@ -3,7 +3,7 @@ class ScorecardsController < ApplicationController
   
   def create
     @user = current_user
-    @scorecard = @user.scorecards.find_or_create_by(exercise: params[:exercise])
+    @scorecard = @user.scorecards.find_or_create_by(exercise_id: params[:exercise])
     redirect_to @scorecard
   end
 
