@@ -1,8 +1,8 @@
 <h1>Exercises index</h1>
 <% @tiers.each do |key, value| %>
-	<div class="well col-md-3">
-		<ul>
-			<h3><%= "Tier #{key.to_s.slice(-1)}" %></h3>
+	<div class="well">
+		<h3><%= "Tier #{key.to_s.slice(-1)}" %></h3>
+		<ul class="columns">
 			<% value.each do |exercise| %>
 				<li><%= link_to exercise.name, exercise_path(exercise) %></li>
 			<% end %>

@@ -1,11 +1,20 @@
-<h1>Today's Routine:</h1>
+<div class="row">
+	<h2>Routine for <%= @routine.updated_at.strftime("%A %d %B") %></h2>
 
-<% timeframes = ['daily', 'weekly', 'monthly'] %>
+	<% timeframes = ['daily', 'weekly', 'monthly'] %>
+</div>
+
 
 <% timeframes.each do |time| %>
+	<h3><%= time.capitalize %> Exercise: </h3> 
 	<% assignment = @routine.send(time) %>
 	<%= render assignment %>
+	<hr />
 <% end %>
-
-<%= link_to "Create a routine", routine_path,
-			method: :post %> 
+<hr />
+<div class="row">
+	<div class="well center">
+			<h3><%= link_to "Get a new routine", routine_path,
+						method: :post %></h3> 
+	</div>
+</div>

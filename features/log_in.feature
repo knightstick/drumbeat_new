@@ -9,5 +9,5 @@ Feature: Log in
 		
 	Scenario: Log out
 	  Given I am logged in
-	  When I click the "Log out" link
+	  When I click the "Log Out" link
 	  Then I should see "Welcome to Drumbeat"

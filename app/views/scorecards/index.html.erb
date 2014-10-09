@@ -20,7 +20,7 @@
         	<% @scorecards.each do |scorecard| %>
                 <% unless scorecard.score4.nil? && scorecard.score60.nil? && scorecard.score5.nil? %>
                 	<tr>
-                		<td><%= link_to scorecard.exercise.name, exercise_path(scorecard.exercise) %></td>
+                		<td><%= link_to scorecard.exercise.name, scorecard %></td>
                 		<td><%= dash_nils scorecard.score4 %></td>
                 		<td><%= dash_nils scorecard.score60 %></td>
                 		<td><%= dash_nils scorecard.score5 %></td>
