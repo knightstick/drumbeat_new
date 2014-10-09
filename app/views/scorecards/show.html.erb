@@ -1,17 +1,13 @@
-<%= render @scorecard.exercise %>
-
-<%= form_for @scorecard do |f| %>
-	<%= f.label :score4 %>
-	<%= f.text_field :score4 %>
-
-	<%= f.label :score60 %>
-	<%= f.text_field :score60 %>
-
-	<%= f.label :score5 %>
-	<%= f.text_field :score5 %>
-
-	<%= f.submit %>
-<% end %>
+<div class="row">
+  <div class="col-md-9">
+    <%= render @scorecard.exercise %>
+  </div>
+  <div class="col-md-3">
+    <%= render partial: 'scorecards/score_widget', 
+          locals: {scorecard: @scorecard} %>
+  </div>
+</div>
+<hr />
 
 <%= render 'assign_form', object: @scorecard %>
 
