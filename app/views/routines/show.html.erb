@@ -6,6 +6,10 @@
 	<% assignment = @routine.send(time) %>
 	<%= render assignment %>
 <% end %>
-
-<%= link_to "Create a routine", routine_path,
-			method: :post %> 
+<hr />
+<div class="row">
+	<div class="well center">
+			<h3><%= link_to "Get a new routine", routine_path,
+						method: :post %></h3> 
+	</div>
+</div>
