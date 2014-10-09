@@ -1,9 +1,10 @@
 <% if current_user.no_scores? %>
 	<div class="center">
-    <p>You've not set any scores yet.</p>
-    <%= link_to "Give me a new daily exercise", assign_new_daily_path %>, or 
-      <%= link_to "browse all exercises", exercises_path %>.
-  </div>
+    <p>You've not set any scores yet. <br />
+      <hr />
+      Why not 
+      <%= link_to "browse all exercises", exercises_path %> or 
+      <%= link_to "get a routine to practise", routine_path %>?
 <% else %>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -19,7 +20,7 @@
         	<% @scorecards.each do |scorecard| %>
                 <% unless scorecard.score4.nil? && scorecard.score60.nil? && scorecard.score5.nil? %>
                 	<tr>
-                		<td><%= link_to scorecard.exercise.name, exercise_path(scorecard.exercise) %></td>
+                		<td><%= link_to scorecard.exercise.name, scorecard %></td>
                 		<td><%= dash_nils scorecard.score4 %></td>
                 		<td><%= dash_nils scorecard.score60 %></td>
                 		<td><%= dash_nils scorecard.score5 %></td>

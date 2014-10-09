@@ -1,6 +1,6 @@
 Given /^there is a User$/ do 
 	@user = User.create!(email: 'chris@example.com', name: 'Chris Jewell', password: 'password', 
-		password_confirmation: 'password', daily_updated_at: Time.now, daily_exercise: 1)
+		password_confirmation: 'password')
 end
 
 Given /^there is an Exercise$/ do

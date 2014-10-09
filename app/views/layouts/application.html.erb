@@ -9,6 +9,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -18,8 +21,10 @@
     <div class="container">
       <%= yield %>
     </div>
+
+
+
   </body>
-</html>
 
 
 </html>

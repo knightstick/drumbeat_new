@@ -1,5 +1,5 @@
 <h1><%= link_to exercise.name, exercise %></h1>
 <div class="rudiment-image">
-  <img src="<%= "#{exercise.image_url}" %>" 
-       class="center-block" />
+  <%= image_tag "#{exercise.image_file}",
+       class: "center-block" %>
 </div>

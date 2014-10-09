@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926032203) do
+ActiveRecord::Schema.define(version: 20141008030528) do
+
+  create_table "assignments", force: true do |t|
+    t.integer  "scorecard_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "timeframe"
+    t.integer  "routine_id"
+  end
+
+  add_index "assignments", ["routine_id"], name: "index_assignments_on_routine_id"
+  add_index "assignments", ["scorecard_id"], name: "index_assignments_on_scorecard_id"
 
   create_table "exercises", force: true do |t|
     t.string   "name"
@@ -21,6 +32,25 @@ ActiveRecord::Schema.define(version: 20140926032203) do
     t.string   "image_url"
     t.integer  "tier"
   end
+
+  create_table "regimes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "daily"
+    t.integer  "weekly"
+    t.integer  "monthly"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "regimes", ["user_id"], name: "index_regimes_on_user_id"
+
+  create_table "routines", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "routines", ["user_id"], name: "index_routines_on_user_id"
 
   create_table "scorecards", force: true do |t|
     t.integer  "user_id"
@@ -41,12 +71,6 @@ ActiveRecord::Schema.define(version: 20140926032203) do
     t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "name"
-    t.integer  "daily_exercise"
-    t.datetime "daily_updated_at"
-    t.integer  "weekly_exercise"
-    t.integer  "monthly_exercise"
-    t.datetime "weekly_updated_at"
-    t.datetime "monthly_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

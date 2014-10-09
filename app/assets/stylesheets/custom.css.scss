@@ -120,3 +120,24 @@ input {
 .score4-present, .score60-present {
   display: none;
 }
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.big-button {
+  padding: 50px;
+  font-size: 2em;
+  margin-top: inherit;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+  width: 315px;
+}
+
+.columns {
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+}

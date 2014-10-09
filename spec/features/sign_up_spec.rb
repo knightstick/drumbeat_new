@@ -24,9 +24,5 @@ describe "Signing up a new User" do
     it "should be logged in as the user" do 
       expect(page).to have_content("Logged in as Example User")
     end
-    
-    it "should have a daily exercise" do
-      expect(page).to have_content("Single Stroke Roll")
-    end
   end
 end

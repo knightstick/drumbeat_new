@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Current Scores</div>
+	  <table class="table center">
+	  	<div class="input-group">
+	    <%= form_for scorecard do |f| %>
+	    <tr>
+	    	<td>4 bars</td>
+	    	<td>
+	    		<%= f.text_field :score4, class: 'center' %></td>
+	    		<td>BPM</td>
+	    </tr>
+	  	<tr>
+	  		<td>60 sec</td>
+	  		<td><%= f.text_field :score60, class: 'center' %></td>
+	  		<td>BPM</td>
+	  	</tr>
+			<tr>
+				<td>5 mins</td>
+				<td><%= f.text_field :score5, class: 'center'%></td>
+				<td>BPM</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<%= f.submit "Update score", class: "btn btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+	  </table>
+</div>

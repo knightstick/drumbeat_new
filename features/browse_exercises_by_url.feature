@@ -7,12 +7,6 @@ Feature: Browse All Exercises by url
       Then I should see "Single Stroke Roll"
     
     Scenario: Show Exercise from index
-      When I click the link "Single Stroke Roll"
+      When I click the "Single Stroke Roll" link
       Then I should see "Single Stroke Roll"
-      And I should see "High Scores:"
-      
-    Scenario: Show Exercise from profile
-      When I visit the "profile" page
-      And I click the link "Single Stroke Roll"
-      Then I should see "Single Stroke Roll"
-      And I should see "High Scores:"
+      And I should see "Try this exercise"

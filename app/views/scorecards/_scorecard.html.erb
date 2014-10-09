@@ -20,10 +20,25 @@
     Practise makes perfect! Set a new high score!
   </p>
   <p>
-    Give up on this one? <%= link_to "Give me a new one", assign_new_daily_path %>, or 
-      <%= link_to "browse all exercises", exercises_path %>.
+    Give up on this one? 
+    <div class="row">
+    <%= form_tag scorecards_path(timeframe: 'daily'), method: :post do %>
+      <%= submit_tag "Get a new one", class: "btn btn-default col-md-4 col-md-offset-2" %>
+    <% end %>
+      <%= link_to "Browse all exercises", exercises_path, class: "btn btn-default col-md-4" %>
+    </div>
   </p>
   </div>
 </div>
 
 <%= render partial: 'scorecards/scorebuttons' %>
+
+<script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+
+  var postUrl = "/users/" + <%= current_user.id %> + "/scorecards/" + <%= @scorecard.id %>
+</script>  

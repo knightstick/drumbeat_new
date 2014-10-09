@@ -6,69 +6,29 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def show
-    @user = User.find(params[:id])
-  end
-  
-  def profile
-    @user = current_user
-    @daily_scorecard = Scorecard.get(@user.daily_exercise, @user.id)
-    @weekly_scorecard = Scorecard.get(@user.weekly_exercise, @user.id)
-    @monthly_scorecard = Scorecard.get(@user.monthly_exercise, @user.id)
-  end
-
   def create
-    @user = User.make(user_params)
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "New user created!"
       session[:user_id] = @user.id
-      @user.daily_scorecard
-      redirect_to "/profile"
+      redirect_to "/me"
     else
       flash[:error] = "ERROR"
       render "new"
     end
   end
 
-  def assign
-    if params["timeframe"] == "Today"
-      @user.assign_daily(force: true, exercise: (params[:id]))
-    elsif params["timeframe"] == "This Week"
-      @user.assign_weekly(force: true, exercise: (params[:id]))
-    elsif params["timeframe"] == "This Month"
-      @user.assign_monthly(force: true, exercise: (params[:id]))
-    end
-    redirect_to '/profile'
+  def show
+    @user = User.find(params[:id])
   end
   
-  def assign_new_daily
+  def profile
     @user = current_user
-    if params[:id].present?
-      @user.assign_daily(force: true, exercise: params[:id])
-    else
-      @user.assign_new_daily
-    end
-    redirect_to root_path
   end
 
-  def assign_new_weekly
+  def practice
     @user = current_user
-    if params[:id].present?
-      @user.assign_weekly(force: true, exercise: params[:id])
-    else
-      @user.assign_new_weekly
-    end
-    redirect_to root_path
-  end
-
-  def assign_new_monthly
-    @user = current_user
-    if params[:id].present?
-      @user.assign_monthly(force: true, exercise: params[:id])
-    else
-      @user.assign_new_monthly
-    end
-    redirect_to root_path
+    @scorecards = @user.current_scorecards
   end
 
   private
