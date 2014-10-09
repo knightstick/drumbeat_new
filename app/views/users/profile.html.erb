@@ -1,15 +1,6 @@
 <h1><%= @user.name %></h1>
 
-<div class="row text-center">
-	<div class="col-md-6">
-		<div class="btn-group">
-			<%= link_to "Quick Practice", random_scorecard_path, class: "btn btn-default btn-lg btn-primary" %>
-		</div>
-	</div>
-	<div class="col-md-6">
-		<div class="btn-group"> 
-			<%= link_to "Practice Routine", routine_path, class: "btn btn-default btn-lg btn-primary" %>
-			</div>
-		</div>
-	</div>
+<div class="center">
+<%= link_to "Quick Practice", random_scorecard_path, class: "btn btn-default btn-lg btn-primary big-button" %>
+<%= link_to "Practice Routine", routine_path, class: "btn btn-default btn-lg btn-primary big-button" %>
 </div>
