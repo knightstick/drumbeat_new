@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Workspace::Application.config.secret_key_base = 'a7ed654c517d5580159316456776d5e9688cfe48e8e889f3a90a14af181ae054b6befbc059f24e3a7233cbfbaf612bcdab49923dd2118b1bbe35230daee4652e'
+Workspace::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+	('x' *30) # minimum requirement of 30 chars
+else
+	ENV['SECRET_TOKEN']
+end
