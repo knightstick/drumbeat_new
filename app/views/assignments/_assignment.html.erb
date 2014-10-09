@@ -1,6 +1,9 @@
-
-	<h1><%= assignment.timeframe.capitalize %> Exercise: </h1>
-<div class="row">	
-	<%= render assignment.scorecard.exercise %>
-	<%= link_to "Score this exercise", assignment.scorecard %>
+<div class="row center">
+	<div class="col-md-9">	
+		<%= render assignment.scorecard.exercise %>
+	</div>
+	<div class="col-md-3">
+		<%= render partial: 'scorecards/score_widget', 
+					locals: {scorecard: assignment.scorecard} %>
+	</div>
 </div>

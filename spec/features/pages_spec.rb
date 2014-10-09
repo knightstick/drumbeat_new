@@ -12,7 +12,7 @@ describe "Pages"  do
     end
     
     it "should have login link" do
-      expect(page).to have_link("Log in")
+      expect(page).to have_link("Log In")
     end
   end
   

@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Current Scores</div>
+	  <table class="table">
+	    <%= form_for scorecard do |f| %>
+	    <tr>
+	    	<td>4 bars</td>
+	    	<td><%= f.text_field :score4 %></td>
+	    </tr>
+	  	<tr>
+	  		<td>60 sec</td>
+	  		<td><%= f.text_field :score60 %></td>
+	  	</tr>
+			<tr>
+				<td>5 mins</td>
+				<td><%= f.text_field :score5 %></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<%= f.submit "Update score", class: "btn btn-danger" %>
+				</td>
+			</tr>
+			<% end %>
+	  </table>
+</div>

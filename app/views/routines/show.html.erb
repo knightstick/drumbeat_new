@@ -1,10 +1,15 @@
-<h1>Today's Routine:</h1>
+<div class="row">
+	<h2>Routine for today:</h2>
 
-<% timeframes = ['daily', 'weekly', 'monthly'] %>
+	<% timeframes = ['daily', 'weekly', 'monthly'] %>
+</div>
+
 
 <% timeframes.each do |time| %>
+	<h3><%= time.capitalize %> Exercise: </h3> 
 	<% assignment = @routine.send(time) %>
 	<%= render assignment %>
+	<hr />
 <% end %>
 <hr />
 <div class="row">
