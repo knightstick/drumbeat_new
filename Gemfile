@@ -22,6 +22,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -59,6 +60,7 @@ end
 group :development, :test do
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 end
