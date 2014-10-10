@@ -13,12 +13,13 @@ Workspace::Application.routes.draw do
   get "me" => 'users#profile', as: 'profile'
 
   get 'me/routine' => 'routines#show', as: 'routine'
+  patch 'me/routine' => 'routines#update'
   get 'me/scorecards/random' => 'scorecards#random', as: 'random_scorecard'
   post 'me/scorecards/:id/reset' => 'scorecards#reset', as: 'reset_scorecard'
 
 
   scope '/me' do 
-    resources :routines, only: [:create, :update]
+    resources :routines, only: [:create]
     resources :scorecards, only: [:index, :show, :update, :create] 
   end  
 end
