@@ -13,3 +13,15 @@ end
 Then /^I should see "(.*?)"$/ do |content|
 	expect(page).to have_content content
 end
+
+When /^I fill in "(.*?)" with "(.*?)"$/ do |target, content|
+	fill_in "#{target}", with: "#{content}"
+end
+
+When /^I refresh the page$/ do
+	visit current_path
+end
+
+Then(/^the "(.*?)" field should show "(.*?)"$/) do |field, content|
+	find_field("#{field}").value.should eq "#{content}"
+end
