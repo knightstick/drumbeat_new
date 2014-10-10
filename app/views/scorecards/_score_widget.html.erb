@@ -6,7 +6,7 @@
 	    <tr>
 	    	<td>4 bars</td>
 	    	<td>
-	    		<%= f.text_field :score4, class: 'center' %></td>
+	    		<%= f.text_field :score4, class: 'center', id: "#{scorecard.exercise.dashify}-score4" %></td>
 	    		<td>BPM</td>
 	    </tr>
 	  	<tr>
@@ -21,7 +21,8 @@
 			</tr>
 			<tr>
 				<td colspan="3">
-					<%= f.submit "Update score", class: "btn btn-danger" %>
+					<%= f.submit "Update score", class: "btn btn-danger", 
+								id: "#{scorecard.exercise.dashify}-update" %>
 				</td>
 			</tr>
 			<% end %>
