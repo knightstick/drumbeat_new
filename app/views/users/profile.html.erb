@@ -1,17 +1,16 @@
-<div class="row">
-	<div class="col-md-3">
-		<img src="http://placepic.me/stevebuscemi/200-200">
-	</div>
-	<div class="col-md-8 text-left">
-		<h1 class="text-left"><%= @user.name %></h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua.</p>
+<div class="row center">
+	<div class="col-md-8 col-md-offset-2">
+		<h1>Welcome to Drumbeat!</h1>
 	</div>
 </div>
-<hr />
 <div class="row">
-	<div class="center">
+	<div class="well center">
 	<%= link_to "Quick Practice", random_scorecard_path, class: "btn btn-default btn-lg btn-primary big-button" %>
 	<%= link_to "Practice Routine", routine_path, class: "btn btn-default btn-lg btn-primary big-button" %>
 	</div>
+</div>
+<div class="row">
+	<div class="well center">
+		<p>To jump straight in to a random exercise, choose 'Quick Practice', or, to get a routine to work on, choose 'Practice Routine'!</p>
+	</div> 
 </div>
